@@ -31,9 +31,13 @@ RUN apk update && apk add --no-cache $PHPIZE_DEPS \
    php7-session \
    php7-zlib
 
+
 # Install extensions
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
+
+#install npm
+RUN apk add --update nodejs nodejs-npm
 
 # install xdebug and enable it if the development environment is local
 RUN if [ $APP_ENV = "local" ]; then \

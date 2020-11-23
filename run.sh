@@ -7,11 +7,11 @@ if [ $ACTION = "bash" ]; then
 docker-compose run app bash
 fi
 
-if [ $ACTION = "exec" ]; then
-docker-compose exec -T app $COMMAND
+if [ $ACTION = "run" ]; then
+docker-compose run -T app $COMMAND
 fi
 
 if [ $ACTION = "artisan" ]; then
-docker-compose exec -T app php artisan $COMMAND
+docker-compose run app php artisan $COMMAND
 fi
 
