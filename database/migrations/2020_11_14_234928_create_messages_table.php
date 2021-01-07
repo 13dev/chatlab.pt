@@ -31,7 +31,6 @@ class CreateMessagesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
         });
-
     }
 
     /**
