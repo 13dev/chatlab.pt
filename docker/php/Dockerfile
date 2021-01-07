@@ -2,7 +2,8 @@
 ARG PHP_VERSION
 
 # PHP Version alpine image to install based on the PHP_VERSION environment variable
-FROM php:$PHP_VERSION-fpm-alpine
+FROM alpine:3.12
+# php:$PHP_VERSION-fpm-alpine
 
 # Application environment variable
 ARG APP_ENV
@@ -11,30 +12,37 @@ ARG APP_ENV
 ARG REMOTE_WORKING_DIR
 
 # Install Additional dependencies
-RUN apk update && apk add --no-cache $PHPIZE_DEPS \
-   build-base shadow nano curl gcc git bash \
-   php7 \
-   php7-fpm \
-   php7-common \
-   php7-pdo \
-   php7-pdo_mysql \
-   php7-mysqli \
-   php7-mcrypt \
-   php7-mbstring \
-   php7-xml \
-   php7-openssl \
-   php7-json \
-   php7-phar \
-   php7-zip \
-   php7-gd \
-   php7-dom \
-   php7-session \
-   php7-zlib
 
+ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+
+RUN apk --update-cache add ca-certificates && \
+    echo "https://dl.bintray.com/php-alpine/v3.12/php-8.0" >> /etc/apk/repositories
+
+RUN apk add --update-cache \
+   php8 \
+   php8-fpm \
+   php8-common \
+   php8-pdo \
+   php8-pdo_mysql \
+   php8-mysqli \
+   php8-mcrypt \
+   php8-mbstring \
+   php8-xml \
+   php8-openssl \
+   php8-json \
+   php8-phar \
+   php8-zip \
+   php8-gd \
+   php8-dom \
+   php8-session \
+   php8-zlib
+
+RUN apk update && apk add --no-cache $PHPIZE_DEPS \
+   build-base shadow nano curl gcc git bash
 
 # Install extensions
-RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-enable pdo_mysql
+#RUN docker-php-ext-install pdo pdo_mysql
+#RUN docker-php-ext-enable pdo_mysql
 
 #install npm
 RUN apk add --update nodejs nodejs-npm
