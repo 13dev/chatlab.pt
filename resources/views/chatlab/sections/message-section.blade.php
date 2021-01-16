@@ -26,7 +26,8 @@
     {{-- Messaging area --}}
     <div class="m-body app-scroll">
         <div class="messages">
-            <p class="message-hint" style="margin-top: calc(30% - 126.2px);"><span>Please select a chat to start messaging</span></p>
+            <p class="message-hint" style="margin-top: calc(30% - 126.2px);"><span>Please select a chat to start messaging</span>
+            </p>
         </div>
         {{-- Typing indicator --}}
         <div class="typing-indicator">

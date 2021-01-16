@@ -9,6 +9,7 @@
                 <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
             </nav>
         </nav>
+
         {{-- Search input --}}
         <input type="text" class="messenger-search" placeholder="Search" />
         {{-- Tabs --}}
