@@ -17,4 +17,4 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
 {{-- Messenger Color Style--}}
-@include('Chatify::layouts.messengerColor')
+@include('Chatify::layouts.messenger-color')

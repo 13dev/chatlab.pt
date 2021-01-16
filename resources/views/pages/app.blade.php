@@ -1,4 +1,4 @@
-@include('Chatify::layouts.headLinks')
+@include('Chatify::layouts.head-links')
 <div class="messenger" id="app">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">
@@ -101,7 +101,7 @@
                 </div>
             </div>
             {{-- Send Message Form --}}
-            @include('Chatify::layouts.sendForm')
+            @include('Chatify::layouts.send-form')
         </div>
     </div>
     {{-- ---------------------- Info side ---------------------- --}}
@@ -115,4 +115,4 @@
 </div>
 
 @include('Chatify::layouts.modals')
-@include('Chatify::layouts.footerLinks')
+@include('Chatify::layouts.footer-links')
