@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 window._ = require('lodash');
 
 /**
@@ -7,8 +9,15 @@ window._ = require('lodash');
  */
 
 window.axios = require('axios');
+window.Vue = require('vue');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+Vue.component('app', require('./components/App').default);
+
+//Register all components on components folder.
+const files = require.context('./components', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
