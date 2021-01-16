@@ -1,7 +1,7 @@
 <style>
 /* NProgress background */
 #nprogress .bar{
-	background: {{ $messengerColor }} !important;
+	background: {{ 1 }} !important;
 }
 #nprogress .peg {
     box-shadow: 0 0 10px {{ $messengerColor }}, 0 0 5px {{ $messengerColor }} !important;

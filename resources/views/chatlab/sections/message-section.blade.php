@@ -12,7 +12,7 @@
             {{-- header buttons --}}
             <nav class="m-header-right">
                 <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                <a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
+                <a href=""><i class="fas fa-home"></i></a>
                 <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
             </nav>
         </nav>
@@ -42,7 +42,7 @@
             </div>
         </div>
         {{-- Send Message Form --}}
-        @include('Chatify::layouts.sendForm')
+        @include('chatlab.includes.send-form')
     </div>
 </div>
 
@@ -52,5 +52,5 @@
     <nav>
         <a href="#"><i class="fas fa-times"></i></a>
     </nav>
-    {!! view('Chatify::layouts.info')->render() !!}
+    {!! view('layouts.info')->render() !!}
 </div>
