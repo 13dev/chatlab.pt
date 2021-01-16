@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Authinticate the connection for pusher
+     * Authinticate the connection for pusher.
      *
      * @param Request $request
      * @return void
@@ -18,8 +18,8 @@ class UserController extends Controller
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
-                'name' => Auth::user()->name
-            ]
+                'name' => Auth::user()->name,
+            ],
         ]);
         // check if user authorized
         if (Auth::check()) {
@@ -34,7 +34,7 @@ class UserController extends Controller
     }
 
     /**
-     * Fetch data by id for (user/group)
+     * Fetch data by id for (user/group).
      *
      * @param Request $request
      * @return collection
@@ -53,12 +53,12 @@ class UserController extends Controller
         return Response::json([
             'favorite' => $favorite,
             'fetch' => $fetch,
-            'user_avatar' => asset('/storage/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+            'user_avatar' => asset('/storage/'.config('chatify.user_avatar.folder').'/'.$fetch->avatar),
         ]);
     }
 
     /**
-     * Get contacts list
+     * Get contacts list.
      *
      * @param Request $request
      * @return JSON response
@@ -66,7 +66,7 @@ class UserController extends Controller
     public function getContacts(Request $request)
     {
         // get all users that received/sent message from/to [Auth user]
-        $users = Message::join('users',  function ($join) {
+        $users = Message::join('users', function ($join) {
             $join->on('messages.from_id', '=', 'users.id')
                 ->orOn('messages.to_id', '=', 'users.id');
         })
@@ -95,7 +95,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update user's list item data
+     * Update user's list item data.
      *
      * @param Request $request
      * @return JSON response
@@ -112,9 +112,8 @@ class UserController extends Controller
         ], 200);
     }
 
-
     /**
-     * Search in messenger
+     * Search in messenger.
      *
      * @param Request $request
      * @return void
@@ -136,7 +135,7 @@ class UserController extends Controller
             'records' => $records->count() > 0
                 ? $getRecords
                 : '<p class="message-hint"><span>Nothing to show.</span></p>',
-            'addData' => 'html'
+            'addData' => 'html',
         ], 200);
     }
 
@@ -147,14 +146,13 @@ class UserController extends Controller
 
         // dark mode
         if ($request['dark_mode']) {
-            $request['dark_mode'] == "dark"
+            $request['dark_mode'] == 'dark'
                 ? User::where('id', Auth::user()->id)->update(['dark_mode' => 1])  // Make Dark
                 : User::where('id', Auth::user()->id)->update(['dark_mode' => 0]); // Make Light
         }
 
         // If messenger color selected
         if ($request['messengerColor']) {
-
             $messenger_color = explode('-', trim(filter_var($request['messengerColor'], FILTER_SANITIZE_STRING)));
             $messenger_color = Chatify::getMessengerColors()[$messenger_color[1]];
             User::where('id', Auth::user()->id)
@@ -171,22 +169,22 @@ class UserController extends Controller
                 if (in_array($file->getClientOriginalExtension(), $allowed_images)) {
                     // delete the older one
                     if (Auth::user()->avatar != config('chatify.user_avatar.default')) {
-                        $path = storage_path('app/public/' . config('chatify.user_avatar.folder') . '/' . Auth::user()->avatar);
+                        $path = storage_path('app/public/'.config('chatify.user_avatar.folder').'/'.Auth::user()->avatar);
                         if (file_exists($path)) {
                             @unlink($path);
                         }
                     }
                     // upload
-                    $avatar = Str::uuid() . "." . $file->getClientOriginalExtension();
+                    $avatar = Str::uuid().'.'.$file->getClientOriginalExtension();
                     $update = User::where('id', Auth::user()->id)->update(['avatar' => $avatar]);
-                    $file->storeAs("public/" . config('chatify.user_avatar.folder'), $avatar);
+                    $file->storeAs('public/'.config('chatify.user_avatar.folder'), $avatar);
                     $success = $update ? 1 : 0;
                 } else {
-                    $msg = "File extension not allowed!";
+                    $msg = 'File extension not allowed!';
                     $error = 1;
                 }
             } else {
-                $msg = "File extension not allowed!";
+                $msg = 'File extension not allowed!';
                 $error = 1;
             }
         }
@@ -200,7 +198,7 @@ class UserController extends Controller
     }
 
     /**
-     * Set user's active status
+     * Set user's active status.
      *
      * @param Request $request
      * @return void
