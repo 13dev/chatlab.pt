@@ -13,10 +13,11 @@
         {{-- Search input --}}
         <input type="text" class="messenger-search" placeholder="Search" />
         {{-- Tabs --}}
+{{--        @if($route == 'user') class="active-tab" @endif--}}
         <div class="messenger-listView-tabs">
-            <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
+            <a href="#" data-view="users">
                 <span class="far fa-user"></span> People</a>
-            <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
+            <a href="#" data-view="groups">
                 <span class="fas fa-users"></span> Groups</a>
         </div>
     </div>
@@ -24,14 +25,15 @@
     <div class="m-body">
         {{-- Lists [Users/Group] --}}
         {{-- ---------------- [ User Tab ] ---------------- --}}
-        <div class="@if($route == 'user') show @endif messenger-tab app-scroll" data-view="users">
+{{--        @if($route == 'user') show @endif--}}
+        <div class=" messenger-tab app-scroll" data-view="users">
 
             {{-- Favorites --}}
             <p class="messenger-title">Favorites</p>
             <div class="messenger-favorites app-scroll-thin"></div>
 
             {{-- Saved Messages --}}
-            {!! view('Chatify::layouts.listItem', ['get' => 'saved','id' => $id])->render() !!}
+            {{--            {!! view('Chatify::layouts.listItem', ['get' => 'saved','id' => $id])->render() !!}--}}
 
             {{-- Contact --}}
             <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);"></div>
@@ -39,7 +41,8 @@
         </div>
 
         {{-- ---------------- [ Group Tab ] ---------------- --}}
-        <div class="@if($route == 'group') show @endif messenger-tab app-scroll" data-view="groups">
+        {{-- @if($route == 'group') show @endif--}}
+        <div class="messenger-tab app-scroll" data-view="groups">
             {{-- items --}}
             <p style="text-align: center;color:grey;">Soon will be available</p>
         </div>
