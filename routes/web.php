@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'e entaooo';
-});
+Route::get('/', fn () => view('welcome'));
 
 Route::get('/dashboard', function () {
     return view('dashboard');
