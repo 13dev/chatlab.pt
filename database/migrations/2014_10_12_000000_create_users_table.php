@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->default(config('chatlab.user_avatar.default'))->after('email');
+            $table->boolean('active_status')->default(0)->after('email');
             $table->rememberToken();
             $table->timestamps();
         });
