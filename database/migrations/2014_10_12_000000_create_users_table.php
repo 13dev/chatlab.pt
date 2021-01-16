@@ -17,10 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->default(config('chatlab.user_avatar.default'))->after('email');
-            $table->boolean('active_status')->default(0)->after('email');
+            $table->string('avatar')->default(config('chatlab.user_avatar.default'));
+            $table->boolean('active_status')->default(0);
+            $table->timestamp('email_verified_at')->nullable();
+
+
             $table->rememberToken();
             $table->timestamps();
         });
