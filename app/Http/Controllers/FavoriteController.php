@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FavoriteController extends Controller
 {
     /**
-     * Put a user in the favorites list
+     * Put a user in the favorites list.
      *
      * @param Request $request
      * @return void
@@ -32,7 +32,7 @@ class FavoriteController extends Controller
     }
 
     /**
-     * Get favorites list
+     * Get favorites list.
      *
      * @param Request $request
      * @return void
@@ -57,7 +57,7 @@ class FavoriteController extends Controller
     }
 
     /**
-     * Search in messenger
+     * Search in messenger.
      *
      * @param Request $request
      * @return void

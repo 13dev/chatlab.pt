@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-
     /**
      * This method to make a links for the attachments
      * to be downloadable.
@@ -16,16 +15,16 @@ class MessageController extends Controller
      */
     public function download($fileName)
     {
-        $path = storage_path() . '/app/public/' . config('chatify.attachments.folder') . '/' . $fileName;
+        $path = storage_path().'/app/public/'.config('chatify.attachments.folder').'/'.$fileName;
         if (file_exists($path)) {
             return Response::download($path, $fileName);
         } else {
-            return abort(404, "Sorry, File does not exist in our server or may have been deleted!");
+            return abort(404, 'Sorry, File does not exist in our server or may have been deleted!');
         }
     }
 
     /**
-     * Send a message to database
+     * Send a message to database.
      *
      * @param Request $request
      * @return JSON response
@@ -49,17 +48,17 @@ class MessageController extends Controller
                     // get attachment name
                     $attachment_title = $file->getClientOriginalName();
                     // upload attachment and store the new name
-                    $attachment = Str::uuid() . "." . $file->getClientOriginalExtension();
-                    $file->storeAs("public/" . config('chatify.attachments.folder'), $attachment);
+                    $attachment = Str::uuid().'.'.$file->getClientOriginalExtension();
+                    $file->storeAs('public/'.config('chatify.attachments.folder'), $attachment);
                 } else {
-                    $error_msg = "File extension not allowed!";
+                    $error_msg = 'File extension not allowed!';
                 }
             } else {
-                $error_msg = "File size is too long!";
+                $error_msg = 'File size is too long!';
             }
         }
 
-        if (!$error_msg) {
+        if (! $error_msg) {
             // send to database
             $messageID = mt_rand(9, 999999999) + time();
             Chatify::newMessage([
@@ -68,7 +67,7 @@ class MessageController extends Controller
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
                 'body' => trim(htmlentities($request['message'])),
-                'attachment' => ($attachment) ? $attachment . ',' . $attachment_title : null,
+                'attachment' => ($attachment) ? $attachment.','.$attachment_title : null,
             ]);
 
             // fetch message to send it with the response
@@ -78,13 +77,13 @@ class MessageController extends Controller
             Chatify::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
-                'message' => Chatify::messageCard($messageData, 'default')
+                'message' => Chatify::messageCard($messageData, 'default'),
             ]);
         }
-
     }
+
     /**
-     * fetch [user/group] messages from database
+     * fetch [user/group] messages from database.
      *
      * @param Request $request
      * @return JSON response
@@ -119,7 +118,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Make messages as seen
+     * Make messages as seen.
      *
      * @param Request $request
      * @return void
@@ -135,7 +134,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Get shared photos
+     * Get shared photos.
      *
      * @param Request $request
      * @return void
@@ -149,7 +148,7 @@ class MessageController extends Controller
         for ($i = 0; $i < count($shared); $i++) {
             $sharedPhotos .= view('Chatify::layouts.listItem', [
                 'get' => 'sharedPhoto',
-                'image' => asset('storage/attachments/' . $shared[$i]),
+                'image' => asset('storage/attachments/'.$shared[$i]),
             ])->render();
         }
         // send the response
@@ -159,7 +158,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Delete conversation
+     * Delete conversation.
      *
      * @param Request $request
      * @return void
@@ -174,5 +173,4 @@ class MessageController extends Controller
             'deleted' => $delete ? 1 : 0,
         ], 200);
     }
-
 }
