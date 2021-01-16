@@ -1,5 +1,5 @@
 @include('Chatify::layouts.headLinks')
-<div class="messenger">
+<div class="messenger" id="app">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">
         {{-- Header and search bar --}}
@@ -37,7 +37,7 @@
 
                {{-- Contact --}}
                <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);"></div>
-               
+
            </div>
 
            {{-- ---------------- [ Group Tab ] ---------------- --}}
