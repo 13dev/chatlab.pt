@@ -21,6 +21,10 @@ window.JQuery = window.$ = require('jquery');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 Vue.component('app', require('./components/App').default);
+Vue.component('sidebar-chat', require('./components/Sidebar/Chat').default);
+Vue.component('sidebar-friends', require('./components/Sidebar/Friends').default);
+Vue.component('sidebar-favorites', require('./components/Sidebar/Favorites').default);
+
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     if (jQuery.browser.mobile) {

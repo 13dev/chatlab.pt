@@ -1,0 +1,83 @@
+<template>
+    <!-- Chats sidebar -->
+    <div id="chats" class="sidebar active">
+        <header>
+            <span>Chats</span>
+            <ul class="list-inline">
+                <li class="list-inline-item" data-toggle="tooltip" title="New group">
+                    <a class="btn btn-outline-light" href="#" data-toggle="modal" data-target="#newGroup">
+                        <i data-feather="users"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="btn btn-outline-light" data-toggle="tooltip" title="New chat" href="#"
+                       data-navigation-target="friends">
+                        <i data-feather="plus-circle"></i>
+                    </a>
+                </li>
+                <li class="list-inline-item d-xl-none d-inline">
+                    <a href="#" class="btn btn-outline-light text-danger sidebar-close">
+                        <i data-feather="x"></i>
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <form>
+            <input type="text" class="form-control" placeholder="Search chats">
+        </form>
+        <div class="sidebar-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div>
+                        <figure class="avatar">
+                            <img src="{{ user.image }}" class="rounded-circle" alt="image">
+                        </figure>
+                    </div>
+                    <div class="users-list-body">
+                        <div>
+                            <h5>{{ user.name }}</h5>
+                            <p>É essas merdas</p>
+                        </div>
+                        <div class="users-list-action">
+                            <small class="text-muted">4:20 PM</small>
+                            <div class="action-toggle">
+                                <div class="dropdown">
+                                    <a data-toggle="dropdown" href="#">
+                                        <i data-feather="more-horizontal"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">Open</a>
+                                        <a href="#" data-navigation-target="contact-information"
+                                           class="dropdown-item">Profile</a>
+                                        <a href="#" class="dropdown-item">Add to archive</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" class="dropdown-item text-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- ./ Chats sidebar -->
+
+</template>
+
+<script>
+export default {
+    name: "Chat",
+    props: {
+        user:{
+            type: Object,
+            required: false,
+        }
+    },
+
+}
+</script>
+
+<style scoped>
+
+</style>
