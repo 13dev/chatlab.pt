@@ -23,7 +23,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/women_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -81,7 +81,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar avatar-state-success">
-                        <img src="./dist/media/img/women_avatar1.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -110,7 +110,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar avatar-state-success">
-                        <img src="./dist/media/img/man_avatar3.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -139,7 +139,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar2.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -226,7 +226,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar1.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -255,7 +255,7 @@
             <li class="list-group-item" data-navigation-target="chats">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">

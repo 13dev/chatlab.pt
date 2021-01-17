@@ -219,7 +219,7 @@
             <li class="list-group-item">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/women_avatar2.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -281,7 +281,7 @@
             <li class="list-group-item">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar1.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -343,7 +343,7 @@
             <li class="list-group-item">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar2.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">

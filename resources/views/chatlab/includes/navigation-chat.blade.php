@@ -74,7 +74,7 @@
             <li data-toggle="tooltip" title="User menu" data-placement="right">
                 <a href="./login.html" data-toggle="dropdown">
                     <figure class="avatar">
-                        <img src="./dist/media/img/women_avatar5.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </a>
                 <div class="dropdown-menu">

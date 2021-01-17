@@ -13,7 +13,7 @@
         <div class="pl-4 pr-4">
             <div class="text-center">
                 <figure class="avatar avatar-xl mb-4">
-                    <img src="./dist/media/img/women_avatar5.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <h5 class="mb-1">Mirabelle Tow</h5>
                 <small class="text-muted font-italic">Last seen: Today</small>
