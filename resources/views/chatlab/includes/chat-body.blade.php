@@ -13,7 +13,7 @@
         <div class="message-item outgoing-message">
             <div class="message-avatar">
                 <figure class="avatar">
-                    <img src="./dist/media/img/women_avatar5.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div>
                     <h5>Mirabelle Tow</h5>
@@ -27,7 +27,7 @@
         <div class="message-item">
             <div class="message-avatar">
                 <figure class="avatar">
-                    <img src="./dist/media/img/man_avatar3.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div>
                     <h5>Byrom Guittet</h5>
@@ -41,7 +41,7 @@
         <div class="message-item outgoing-message">
             <div class="message-avatar">
                 <figure class="avatar">
-                    <img src="./dist/media/img/women_avatar5.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div>
                     <h5>Mirabelle Tow</h5>
@@ -55,7 +55,7 @@
         <div class="message-item">
             <div class="message-avatar">
                 <figure class="avatar">
-                    <img src="./dist/media/img/man_avatar3.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div>
                     <h5>Byrom Guittet</h5>

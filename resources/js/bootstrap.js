@@ -1,5 +1,11 @@
 import Vue from 'vue';
 
+require('popper.js');
+require('bootstrap');
+window.feather = require('feather-icons');
+feather.replace();
+
+
 window._ = require('lodash');
 
 /**
@@ -10,13 +16,17 @@ window._ = require('lodash');
 
 window.axios = require('axios');
 window.Vue = require('vue');
+window.JQuery = window.$ = require('jquery');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 Vue.component('app', require('./components/App').default);
-Vue.component('sidebar-header', require('./components/Sidebar/Header').default);
-Vue.component('sidebar-favorites-section', require('./components/Sidebar/Favorites/Section').default);
-Vue.component('sidebar-favorites-person', require('./components/Sidebar/Favorites/Person').default);
+
+$(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
+    if (jQuery.browser.mobile) {
+        $(this).closest('.sidebar-group').removeClass('mobile-open');
+    }
+});
 
 //Register all components on components folder.
 // const files = require.context('./components', true, /\.vue$/i)

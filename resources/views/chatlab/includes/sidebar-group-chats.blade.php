@@ -28,7 +28,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <figure class="avatar avatar-state-success">
-                    <img src="./dist/media/img/man_avatar1.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div class="users-list-body">
                     <div>
@@ -43,7 +43,7 @@
             </li>
             <li class="list-group-item">
                 <figure class="avatar avatar-state-warning">
-                    <img src="./dist/media/img/man_avatar4.jpg" class="rounded-circle" alt="image">
+                    <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                 </figure>
                 <div class="users-list-body">
                     <div>
@@ -61,7 +61,7 @@
             <li class="list-group-item open-chat">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/man_avatar3.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -92,7 +92,7 @@
             <li class="list-group-item">
                 <div>
                     <figure class="avatar">
-                        <img src="./dist/media/img/women_avatar1.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
@@ -154,7 +154,7 @@
             <li class="list-group-item">
                 <div>
                     <figure class="avatar avatar-state-warning">
-                        <img src="./dist/media/img/women_avatar1.jpg" class="rounded-circle" alt="image">
+                        <img src="{{ random_avatar() }}" class="rounded-circle" alt="image">
                     </figure>
                 </div>
                 <div class="users-list-body">
