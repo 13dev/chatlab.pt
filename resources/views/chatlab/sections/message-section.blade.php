@@ -52,5 +52,5 @@
     <nav>
         <a href="#"><i class="fas fa-times"></i></a>
     </nav>
-    {!! view('layouts.info')->render() !!}
+    {!! view('chatlab.info')->render() !!}
 </div>
