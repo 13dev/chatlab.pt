@@ -11,9 +11,9 @@
             @include('chatlab.includes.sidebar-group-favorites')
         </div>
         <div class="chat">
-            @include('chatlab.includes.chat-header')
-            @include('chatlab.includes.chat-body')
-            @include('chatlab.includes.chat-footer')
+            <chat-header :user="{}"></chat-header>
+            <chat-body :conversation="{}"></chat-body>
+            <chat-footer></chat-footer>
         </div>
         <div class="sidebar-group mobile-open">
             {{--        @include('chatlab.includes.sidebar-group2-contact-information')--}}
