@@ -24,6 +24,10 @@ Vue.component('app', require('./components/App').default);
 Vue.component('chat-body', require('./components/Chat/Body').default);
 Vue.component('chat-footer', require('./components/Chat/Footer').default);
 Vue.component('chat-header', require('./components/Chat/Header').default);
+Vue.component('sidebar-chat', require('./components/Sidebar/Chat').default);
+Vue.component('sidebar-friends', require('./components/Sidebar/Friends').default);
+Vue.component('sidebar-favorites', require('./components/Sidebar/Favorites').default);
+
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     if (jQuery.browser.mobile) {
