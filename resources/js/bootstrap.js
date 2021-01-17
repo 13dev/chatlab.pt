@@ -14,10 +14,13 @@ window.Vue = require('vue');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 Vue.component('app', require('./components/App').default);
+Vue.component('sidebar-header', require('./components/Sidebar/Header').default);
+Vue.component('sidebar-favorites-section', require('./components/Sidebar/Favorites/Section').default);
+Vue.component('sidebar-favorites-person', require('./components/Sidebar/Favorites/Person').default);
 
 //Register all components on components folder.
-const files = require.context('./components', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// const files = require.context('./components', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

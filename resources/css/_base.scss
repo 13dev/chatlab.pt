@@ -44,6 +44,7 @@ body{
     height: 100%;
     font-family: sans-serif;
 }
+
 .messenger-listView{
     position: relative;
     top: 0px;
@@ -717,48 +718,6 @@ body{
 
 
 
-/*
-***********************************************
-* Placeholder loading
-***********************************************
-*/
-.loadingPlaceholder-wrapper {
-    position: relative;
-}
-
-.loadingPlaceholder-body div,
-.loadingPlaceholder-header tr td div {
-    background-repeat: no-repeat;
-    background-size: 800px 104px;
-    height: 104px;
-    position: relative;
-}
-
-.loadingPlaceholder-body div {
-    position: absolute;
-    right: 0px;
-    left: 0px;
-    top: 0px;
-}
-
-div.loadingPlaceholder-avatar {
-    height: 45px !important;
-    width: 45px;
-    margin: 10px;
-    border-radius: 60px;
-}
-div.loadingPlaceholder-name {
-    height: 15px !important;
-    margin-bottom: 10px;
-    width: 150px;
-    border-radius: 2px;
-}
-
-div.loadingPlaceholder-date {
-    height: 10px !important;
-    width: 106px;
-    border-radius: 2px;
-}
 /*
 ***********************************************
 * Image modal box
