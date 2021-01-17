@@ -21,6 +21,9 @@ window.JQuery = window.$ = require('jquery');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 Vue.component('app', require('./components/App').default);
+Vue.component('chat-body', require('./components/Chat/Body').default);
+Vue.component('chat-footer', require('./components/Chat/Footer').default);
+Vue.component('chat-header', require('./components/Chat/Header').default);
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     if (jQuery.browser.mobile) {
