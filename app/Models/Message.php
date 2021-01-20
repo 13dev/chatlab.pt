@@ -14,28 +14,29 @@ class Message extends UuidModel
      * @var array
      */
     protected $fillable = [
-        'type',
-        'to_id',
-        'from_id',
-        'content',
+        'thread_id',
+        'sender_id',
+        'body',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $hidden = [
-        'content',
-    ];
-
-    public function to()
+    public function sender()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
-    public function from()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function thread()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(MessageThread::class, 'thread_id');
+    }
+
+    public function scopeFromSender($query, $sender)
+    {
+        return $query->where('sender_id', $sender);
     }
 }
