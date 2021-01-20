@@ -15,21 +15,13 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type');
-            $table->uuid('to_id');
-            $table->uuid('from_id');
-            $table->string('content', 10000);
-            $table->timestamps();
+            $table->uuid('thread_id');
+            $table->uuid('sender_id');
+            $table->text('body');
+            $table->timestamp('created_at');
 
-            $table->foreign('to_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('from_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('thread_id')->references('id')->on('message_threads')->onDelete('cascade');
         });
     }
 
@@ -40,7 +32,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('user_id');
         Schema::dropIfExists('messages');
     }
 }
