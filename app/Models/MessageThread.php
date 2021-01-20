@@ -32,7 +32,7 @@ class MessageThread extends Model
      * @var array
      */
     public $dates = [
-        'last_read'
+        'last_read',
     ];
 
     /**
@@ -41,7 +41,7 @@ class MessageThread extends Model
      * @var array
      */
     protected $with = [
-        'messages'
+        'messages',
     ];
 
     /**
@@ -63,6 +63,4 @@ class MessageThread extends Model
     {
         return $this->hasMany(MessageThreadParticipant::class, 'thread_id');
     }
-
-
 }
