@@ -5,10 +5,6 @@
 
     <div class="content">
         <div class="sidebar-group">
-            @include('chatlab.includes.sidebar-group-chats')
-            @include('chatlab.includes.sidebar-group-friends')
-            @include('chatlab.includes.sidebar-group-archived')
-            @include('chatlab.includes.sidebar-group-favorites')
         </div>
         <div class="chat">
             <chat-header :user="{}"></chat-header>
