@@ -16,6 +16,7 @@ class MessageThread extends Model
      */
     protected $fillable = [
         'last_read',
+        'title',
     ];
 
     /**
