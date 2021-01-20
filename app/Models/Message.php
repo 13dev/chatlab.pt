@@ -39,6 +39,4 @@ class Message extends UuidModel
     {
         return $query->where('sender_id', $sender);
     }
-
-
 }
