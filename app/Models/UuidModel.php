@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 
 abstract class UuidModel extends Model
 {
