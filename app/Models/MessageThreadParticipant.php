@@ -16,7 +16,7 @@ class MessageThreadParticipant extends Model
     ];
 
     public $dates = [
-        'deleted_at'
+        'deleted_at',
     ];
 
     public $timestamps = false;
