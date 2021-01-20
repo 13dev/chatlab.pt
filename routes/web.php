@@ -22,3 +22,9 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 // User Routes
+
+Route::get('/', [UserController::class,'index']);
+
+// User Routes
+
+// User Routes
