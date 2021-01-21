@@ -23,7 +23,7 @@ require __DIR__.'/auth.php';
 
 // User Routes
 
-Route::get('/', [UserController::class,'index']);
+Route::get('/', [UserController::class, 'index']);
 
 // User Routes
 
