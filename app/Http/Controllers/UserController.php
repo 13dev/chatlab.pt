@@ -9,11 +9,10 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      */
     public function index()
     {
-        return view('test',['user' => User::all()]);
+        return view('test', ['user' => User::all()]);
     }
 
     /**
@@ -38,7 +37,7 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => $request->get('password'),
-            'avatar' => $request->get('avatar')
+            'avatar' => $request->get('avatar'),
         ]);
     }
 
@@ -49,7 +48,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('test',['user' => User::find($id)]);
+        return view('test', ['user' => User::find($id)]);
     }
 
     /**
@@ -59,7 +58,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('edit',['id' => $id]);
+        return view('edit', ['id' => $id]);
     }
 
     /**
