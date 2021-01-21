@@ -23,7 +23,7 @@ class MessageThreadFactory extends Factory
     {
         return [
             'id' => $this->faker->uuid,
-            'title' => $this->faker->sentence
+            'title' => $this->faker->sentence,
         ];
     }
 }

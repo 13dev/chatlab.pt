@@ -27,7 +27,7 @@ class MessageThreadParticipantFactory extends Factory
         return [
             'thread_id' => MessageThread::factory(),
             'user_id' => User::factory(),
-            'last_read' => Carbon::now()
+            'last_read' => Carbon::now(),
         ];
     }
 }

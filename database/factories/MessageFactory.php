@@ -28,7 +28,7 @@ class MessageFactory extends Factory
             'thread_id' => MessageThread::factory(),
             'sender_id' => User::factory(),
             'body' => $this->faker->paragraph,
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
         ];
     }
 }
