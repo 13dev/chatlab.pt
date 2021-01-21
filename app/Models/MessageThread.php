@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MessageThread extends Model
+class MessageThread extends UuidModel
 {
-    use HasFactory;
+    use HasFactory, Uuid;
 
     /**
      * The attributes that are mass assignable.
