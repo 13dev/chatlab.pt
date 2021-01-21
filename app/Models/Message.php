@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Message extends UuidModel
+class Message extends Model
 {
     use HasFactory;
 
@@ -18,6 +20,8 @@ class Message extends UuidModel
         'sender_id',
         'body',
     ];
+
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
