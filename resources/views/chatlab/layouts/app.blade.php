@@ -20,11 +20,15 @@
 
     <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
+
+
 </head>
 <body class="dark">
     @include('chatlab.modals.modals')
     <div class="layout" id="app">
-        @yield('content')
+        @inertia
+        @include('chatlab.includes.navigation-chat')
+
     </div>
 </body>
 </html>

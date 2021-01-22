@@ -13,6 +13,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "goldspecdigital/laravel-eloquent-uuid": "^8.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^0.3.6",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "prettus/l5-repository": "^2.7",
