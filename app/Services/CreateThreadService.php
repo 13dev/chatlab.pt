@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Services;
-
 
 use App\Models\MessageThread;
 use App\Repositories\MessageThreadParticipantRepository;
@@ -33,7 +31,7 @@ class CreateThreadService
         DB::transaction(function () use ($participants, $title, &$thread) {
             /** @var MessageThread $thread */
             $thread = $this->messageThreadRepository->create([
-                'title' => $title
+                'title' => $title,
             ]);
 
             foreach ($participants as $participant) {
