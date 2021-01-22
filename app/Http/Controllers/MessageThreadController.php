@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MessageThread;
-use App\Repositories\MessageThreadParticipantRepository;
-use App\Repositories\MessageThreadRepository;
+use App\Http\Resources\MessageThreadResource;
 use App\Services\CreateThreadService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class MessageThreadController extends Controller
 {
     /**
      * @param Request $request
      * @param CreateThreadService $createThreadService
-     * @return JsonResponse
+     * @return MessageThreadResource
      */
     public function store(Request $request, CreateThreadService $createThreadService)
     {
@@ -24,7 +20,7 @@ class MessageThreadController extends Controller
             $request->get('title') ?: null
         );
 
-        return new JsonResponse($thread);
+        return new MessageThreadResource($thread);
     }
 
     /**
