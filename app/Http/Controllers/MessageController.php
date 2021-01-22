@@ -19,6 +19,7 @@ class MessageController extends Controller
     public function index()
     {
         $data = $this->repository->all();
+
         return MessageResource::collection($data);
     }
 
