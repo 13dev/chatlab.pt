@@ -14,7 +14,7 @@ class MessageThreadResource extends JsonResource
            'messages' => MessageResource::collection(
                $this->whenLoaded('messages')
            ),
-           'participants' => Participants::collection(
+           'participants' => MessageThreadParticipantResource::collection(
                $this->whenLoaded('participants')),
        ];
     }
