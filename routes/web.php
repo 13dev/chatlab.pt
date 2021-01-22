@@ -21,7 +21,6 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function (RequestAlias $request) {
-
     $threads = MessageThreadResource::collection(
         MessageThread::with('participants', 'messages')->get()
     )->toJson();
