@@ -29,7 +29,6 @@ Route::get('/', [TestController::class, 'index']);
 
 Route::resource('messages', MessageController::class);
 
-
 // User Routes
 
 // User Routes
