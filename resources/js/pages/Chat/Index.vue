@@ -17,7 +17,13 @@
 <script>
 export default {
     props: ['user', 'thread'],
-    name: "Index"
+    name: "Index",
+    data() {
+      return {
+          user: {},
+          thread: {},
+      }
+    },
 }
 </script>
 
