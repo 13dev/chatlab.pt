@@ -11,7 +11,6 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 
 class UserController extends Controller
 {
-
     private UserRepository $repository;
 
     public function __construct(UserRepository $repository)
@@ -35,7 +34,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-
     public function store(Request $request, UserValidator $validator)
     {
         $data = $request->only('name', 'email', 'password');
@@ -57,7 +55,6 @@ class UserController extends Controller
 
         return UserResource::collection($data);
     }
-
 
     public function edit($id)
     {
