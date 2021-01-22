@@ -67,6 +67,6 @@ class MessageThread extends UuidModel
 
     public function getLastReadAttribute()
     {
-        return "123";
+        return '123';
     }
 }
