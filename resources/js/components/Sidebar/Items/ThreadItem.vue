@@ -2,12 +2,12 @@
     <li class="list-group-item">
         <div>
             <figure class="avatar">
-                <img src="{{ user.image }}" class="rounded-circle" alt="image">
+                <img :src="''" class="rounded-circle" alt="image">
             </figure>
         </div>
         <div class="users-list-body">
             <div>
-                <h5>{{ user.name }}</h5>
+                <h5>{{ thread.title }}</h5>
                 <p>É essas merdas</p>
             </div>
             <div class="users-list-action">
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-export default{
-    name : "ConversationItem",
+export default {
+    name: "ThreadItem",
     props: {
-        name : {
+        thread: {
             type: Object,
-            required: false,
+            required: true,
         }
     }
 }

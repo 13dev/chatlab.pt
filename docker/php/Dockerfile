@@ -36,8 +36,9 @@ RUN apk update && apk add --no-cache $PHPIZE_DEPS \
    build-base shadow nano curl gcc git bash
 
 # Install extensions
-#RUN docker-php-ext-install pdo pdo_mysql
-#RUN docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install mysqli
 
 #install npm
 RUN apk add --update nodejs nodejs-npm

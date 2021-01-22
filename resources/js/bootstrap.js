@@ -27,6 +27,9 @@ Vue.component('chat-header', require('./components/Chat/Header').default);
 Vue.component('sidebar-chat', require('./components/Sidebar/Chat').default);
 Vue.component('sidebar-friends', require('./components/Sidebar/Friends').default);
 Vue.component('sidebar-favorites', require('./components/Sidebar/Favorites').default);
+Vue.component('sidebar-items-thread', require('./components/Sidebar/Items/ThreadItem').default);
+Vue.component('sidebar-items-favorite', require('./components/Sidebar/Items/FavoriteItem').default);
+Vue.component('sidebar-items-friend', require('./components/Sidebar/Items/FriendItem').default);
 
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
