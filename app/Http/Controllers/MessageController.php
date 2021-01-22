@@ -16,6 +16,10 @@ class MessageController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * Get all Messages
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
         $data = $this->repository->all();
