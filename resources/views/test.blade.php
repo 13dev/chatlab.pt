@@ -1,1 +1,1 @@
-{{ dump($users) }}
+{{ dd($user) }}

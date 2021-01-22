@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ require __DIR__.'/auth.php';
 
 // User Routes
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [TestController::class, 'index']);
 
 // User Routes
 
