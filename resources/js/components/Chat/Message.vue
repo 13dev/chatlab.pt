@@ -5,7 +5,7 @@
     >
         <div class="message-avatar">
             <figure class="avatar">
-                <img src="{{ user.image }}" class="rounded-circle" alt="image">
+                <img :src="user.image" class="rounded-circle" alt="image">
             </figure>
             <div>
                 <h5>{{ user.name }}</h5>

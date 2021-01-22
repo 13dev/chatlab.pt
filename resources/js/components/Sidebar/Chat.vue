@@ -27,8 +27,11 @@
         </form>
         <div class="sidebar-body">
             <ul class="list-group list-group-flush">
-
-
+                <sidebar-items-thread
+                    v-for="thread in threads"
+                    :thread="thread"
+                    :key="thread.id">
+                </sidebar-items-thread>
             </ul>
         </div>
     </div>
@@ -40,10 +43,10 @@
 export default {
     name: "Chat",
     props: {
-        user:{
-            type: Object,
-            required: false,
-        }
+        threads: {
+            type: Array,
+            required: true,
+        },
     },
 
 }

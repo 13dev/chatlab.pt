@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="messages" v-else>
-            <message v-for="message in conversation.messages" :message="message"></message>
-<!--            <div class="message-item messages-divider" data-label="1 message unread"></div>-->
+            <message v-for="message in thread.messages" :message="message" :key="message.id"></message>
+            <!--            <div class="message-item messages-divider" data-label="1 message unread"></div>-->
         </div>
     </div>
 
@@ -20,10 +20,11 @@
 
 <script>
 import Message from "./Message";
+
 export default {
     name: "Body",
     props: {
-        conversation: {
+        thread: {
             type: Object,
             required: true,
         }

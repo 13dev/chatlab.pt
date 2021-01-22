@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MessageThreadResource;
+use App\Models\MessageThread;
 use App\Services\CreateThreadService;
 use Illuminate\Http\Request;
 
 class MessageThreadController extends Controller
 {
+
+    public function index()
+    {
+        return new MessageThreadResource(
+            MessageThread::with('participants', 'messages')->get()
+        );
+    }
     /**
      * @param Request $request
      * @param CreateThreadService $createThreadService

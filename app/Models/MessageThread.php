@@ -64,4 +64,9 @@ class MessageThread extends UuidModel
     {
         return $this->hasMany(MessageThreadParticipant::class, 'thread_id');
     }
+
+    public function getLastReadAttribute()
+    {
+        return "123";
+    }
 }

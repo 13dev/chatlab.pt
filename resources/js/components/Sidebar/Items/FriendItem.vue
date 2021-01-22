@@ -2,7 +2,7 @@
     <li class="list-group-item" data-navigation-target="chats">
         <div>
             <figure class="avatar">
-                <img src="{{ user.image }}" class="rounded-circle" alt="image">
+                <img :src="user.image" class="rounded-circle" alt="image">
             </figure>
         </div>
         <div class="users-list-body">
@@ -34,9 +34,9 @@
 export default{
     name : "FriendItem",
     props: {
-        name : {
+        user: {
             type: Object,
-            required: false,
+            required: true,
         }
     }
 }
