@@ -17,7 +17,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Get all Messages
+     * Get all Messages.
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
