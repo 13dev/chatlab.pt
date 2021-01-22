@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,8 @@ require __DIR__.'/auth.php';
 Route::get('/', [TestController::class, 'index']);
 
 Route::resource('messages', MessageController::class);
+
+Route::resource('user', UserController::class);
 
 // User Routes
 
