@@ -2,95 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Repositories\UserRepository;
+use App\Validators\UserValidator;
 use Illuminate\Http\Request;
+use Prettus\Validator\Contracts\ValidatorInterface;
 
 class UserController extends Controller
 {
+    private UserRepository $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return view('test', ['user' => User::all()]);
+        $data = $this->repository->all();
+
+        return UserResource::collection($data);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param UserValidator $validator
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create()
+    public function store(Request $request, UserValidator $validator)
     {
-        return view('create');
+        $data = $request->only('name', 'email', 'password');
+
+        $validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+
+        $response = $this->repository->create($data);
+
+        return UserResource::collection($response);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-            'avatar' => $request->get('avatar'),
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show($id)
     {
-        return view('test', ['user' => User::find($id)]);
+        $data = $this->repository->get($id);
+
+        return UserResource::collection($data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     */
     public function edit($id)
     {
-        return view('edit', ['id' => $id]);
+        //return view('edit', ['id' => $id]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @param UserValidator $validator
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, UserValidator $validator)
     {
-        $user = User::find($id);
+        $data = $request->only('name', 'email', 'password');
 
-        if ($user == null) {
-            // se nao der resultado
-        }
+        $validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        $user->update([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'avatar' => $request->get('avatar'),
-        ]);
+        $response = $this->repository->update($data, $id);
+
+        return UserResource::collection($response);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $response = $this->repository->delete($id);
+
+        return UserResource::collection($response);
     }
 }
