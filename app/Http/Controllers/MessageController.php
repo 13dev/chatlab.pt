@@ -3,46 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MessageResource;
-use App\Models\Message;
+use App\Repositories\MessageRepository;
+use App\Validators\MessageValidator;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    private MessageRepository $repository;
+
+    public function __construct(MessageRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Get all Messages.
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        //return new MessageResource(Message::find(1));
+        $data = $this->repository->all();
+
+        return MessageResource::collection($data);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param MessageValidator $validator
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create()
+    public function store(Request $request, MessageValidator $validator)
     {
-        //
-    }
+        $data = $request->only('thread_id', 'sender_id', 'body');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $validator->with($data)->passesOrFail();
+
+        $response = $this->repository->create($data);
+
+        return MessageResource::collection($response);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,7 +58,7 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -64,8 +69,8 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -76,7 +81,7 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

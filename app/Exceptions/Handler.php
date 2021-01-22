@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +34,14 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+    }
+
+    public function report(Throwable $exception)
+    {
+        if ($exception instanceof ValidationException) {
+            dd('Validation exception');
+        }
+
+        parent::report($exception);
     }
 }
