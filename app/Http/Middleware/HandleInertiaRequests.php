@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -13,7 +14,7 @@ class HandleInertiaRequests extends Middleware
      * @see https://inertiajs.com/server-side-setup#root-template
      * @var string
      */
-    protected $rootView = 'app';
+    protected $rootView = 'chatlab.layouts.app';
 
     /**
      * Determines the current asset version.
@@ -36,6 +37,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+
         return array_merge(parent::share($request), [
             //
         ]);

@@ -20,8 +20,6 @@
 
     <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
-
-
 </head>
 <body class="dark">
     @include('chatlab.modals.modals')

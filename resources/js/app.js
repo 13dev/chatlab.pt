@@ -16,6 +16,6 @@ new Vue({
             resolveComponent: name => require(`./pages/${name}`).default,
         },
     }),
-});
+}).$mount(app);
 
 
