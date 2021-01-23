@@ -2,7 +2,7 @@
     <li class="list-group-item" @click.prevent="handleChangeChat">
         <div>
             <figure class="avatar">
-                <img :src="''" class="rounded-circle" alt="image">
+                <img :src="thread.avatar" class="rounded-circle" alt="image">
             </figure>
         </div>
         <div class="users-list-body">

@@ -2,7 +2,7 @@
     <div class="chat-header">
         <div class="chat-header-user">
             <figure class="avatar">
-                <img src="" class="rounded-circle" alt="image">
+                <img :src="thread != null ? thread.avatar : ' '" class="rounded-circle" alt="image">
             </figure>
             <div v-if="!thread">
                 <h5>Please choose a conversation</h5>
@@ -81,6 +81,7 @@ export default {
     on: {
         THREAD_CHANGED(thread) {
             this.thread = thread;
+            console.log(this.thread);
         }
     },
     methods: {

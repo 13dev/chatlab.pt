@@ -5,7 +5,7 @@
         </div>
         <div class="chat">
             <chat-header></chat-header>
-<!--            <chat-body ></chat-body>-->
+           <chat-body ></chat-body>
             <chat-footer></chat-footer>
         </div>
         <div class="sidebar-group mobile-open">
