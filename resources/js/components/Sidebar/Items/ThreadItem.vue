@@ -43,6 +43,7 @@ export default {
     },
     methods: {
         handleChangeChat() {
+            this.$activeChat = this.thread.id;
             this.$bus.emit('THREAD_CHANGED', this.thread);
         }
     }

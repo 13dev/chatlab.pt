@@ -9,8 +9,7 @@ Vue.use(BootstrapVue);
 Vue.use(plugin);
 Vue.use(EventBus);
 
-Vue.prototype.$activeChat = 2;
-
+Vue.prototype.$activeChat = null;
 
 const app = document.getElementById('app')
 new Vue({
