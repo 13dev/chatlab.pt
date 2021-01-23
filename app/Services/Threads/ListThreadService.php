@@ -19,6 +19,8 @@ class ListThreadService
 
     public function __invoke()
     {
+        debugbar()->log('Calling ListThreadSerice');
+
         return $this->messageThreadRepository->paginate(5);
     }
 }

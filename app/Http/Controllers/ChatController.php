@@ -9,7 +9,8 @@ class ChatController extends Controller
 {
     public function __invoke(ListThreadService $listThreadService)
     {
-        logs()->info('2');
+        debugbar()->log('Calling Chat Controller');
+
         $threads = MessageThreadResource::collection($listThreadService());
 
         return inertia('Chat/Index', compact('threads'));
