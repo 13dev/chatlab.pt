@@ -31,7 +31,6 @@ class CreateThreadService
         $thread = null;
 
         DB::transaction(function () use ($participants, $title, &$thread) {
-
             debugbar()->log('Creating the thread...');
             /** @var MessageThread $thread */
             $thread = $this->messageThreadRepository->create([
