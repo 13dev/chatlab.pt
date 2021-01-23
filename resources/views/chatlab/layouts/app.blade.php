@@ -16,16 +16,13 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
 </head>
 <body class="dark">
     @include('chatlab.modals.modals')
-    <div class="layout">
-        @include('chatlab.includes.navigation-chat')
-        @inertia
-    </div>
+    @inertia
 </body>
 </html>

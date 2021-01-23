@@ -7,8 +7,7 @@ require('bootstrap');
 window._ = require('lodash');
 window.axios = require('axios');
 window.Vue = require('vue');
-window.feather = require('feather-icons');
-
+const feather = require('feather-icons');
 feather.replace();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -22,6 +21,7 @@ Vue.component('sidebar-favorites', require('./components/Sidebar/Favorites').def
 Vue.component('sidebar-items-thread', require('./components/Sidebar/Items/ThreadItem').default);
 Vue.component('sidebar-items-favorite', require('./components/Sidebar/Items/FavoriteItem').default);
 Vue.component('sidebar-items-friend', require('./components/Sidebar/Items/FriendItem').default);
+Vue.component('sidebar-navigation', require('./components/Sidebar/Navigation').default);
 
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {

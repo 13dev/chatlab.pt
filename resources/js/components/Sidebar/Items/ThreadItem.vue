@@ -7,7 +7,7 @@
         </div>
         <div class="users-list-body">
             <div>
-                <h5>{{ thread.title }}</h5>
+            <h5>{{ thread.title }}</h5>
                 <p>É essas merdas</p>
             </div>
             <div class="users-list-action">
