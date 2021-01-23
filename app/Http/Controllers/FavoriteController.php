@@ -2,64 +2,85 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FavoriteResource;
+use App\Repositories\FavoriteRepository;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
-    /**
-     * Put a user in the favorites list.
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function favorite(Request $request)
-    {
-        // check action [star/unstar]
-        if (Chatify::inFavorite($request['user_id'])) {
-            // UnStar
-            Chatify::makeInFavorite($request['user_id'], 0);
-            $status = 0;
-        } else {
-            // Star
-            Chatify::makeInFavorite($request['user_id'], 1);
-            $status = 1;
-        }
 
-        // send the response
-        return Response::json([
-            'status' => @$status,
-        ], 200);
+    private FavoriteRepository $repository;
+
+    public function __construct(FavoriteRepository $repository)
+    {
+        $this->repository = $repository;
     }
 
     /**
-     * Get favorites list.
-     *
-     * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function getFavorites(Request $request)
+    public function index()
     {
-        $favoritesList = null;
-        $favorites = Favorite::where('user_id', Auth::user()->id);
-        foreach ($favorites->get() as $favorite) {
-            // get user data
-            $user = User::where('id', $favorite->favorite_id)->first();
-            $favoritesList .= view('Chatify::layouts.favorite', [
-                'user' => $user,
-            ]);
-        }
-        // send the response
-        return Response::json([
-            'favorites' => $favorites->count() > 0
-                ? $favoritesList
-                : '<p class="message-hint"><span>Your favorite list is empty</span></p>',
-        ], 200);
+        $data = $this->repository->all();
+
+        return FavoriteResource::collection($data);
     }
 
     /**
-     * Search in messenger.
-     *
      * @param Request $request
-     * @return void
+     * @param UserValidator $validator
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
+    public function store(Request $request, UserValidator $validator)
+    {
+        $data = $request->only('user_id','favorited_id');
+
+        $response = $this->repository->create($data);
+
+        return FavoriteResource::collection($response);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function show($id)
+    {
+      $data = $this->repository->get($id);
+
+      return FavoriteResource::collection($id);
+    }
+
+    public function edit($id)
+    {
+        //return view('edit', ['id' => $id]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @param UserValidator $validator
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function update(Request $request, $id, UserValidator $validator)
+    {
+        $data = $request->only('user_id','favorited_id');
+
+        $response = $this->repository->update($data,$id);
+
+        return FavoriteResource::collection($response);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function destroy($id)
+    {
+       $data = $this->repository->get($id);
+
+       return FavoriteResource::collection($data);
+    }
 }
