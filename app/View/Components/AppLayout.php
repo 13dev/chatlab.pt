@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
-
     public function render()
     {
         return view('auth.auth.app');
