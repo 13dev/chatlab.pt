@@ -1,11 +1,11 @@
 <template>
     <div class="content">
         <div class="sidebar-group">
-            <sidebar-chat :threads="JSON.parse(this.threads)"></sidebar-chat>
+            <sidebar-chat :threads="threads.data"></sidebar-chat>
         </div>
         <div class="chat">
             <chat-header :user="user"></chat-header>
-<!--            <chat-body :thread="thread"></chat-body>-->
+<!--            <chat-body ></chat-body>-->
             <chat-footer></chat-footer>
         </div>
         <div class="sidebar-group mobile-open">
@@ -19,8 +19,8 @@ export default {
     props: ['user','threads'],
 
     name: "Index",
-    mounted() {
-
+    created() {
+        console.log(this.$activeChat);
     }
 
 }

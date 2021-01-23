@@ -1,5 +1,5 @@
 <template>
-    <li class="list-group-item">
+    <li class="list-group-item" @click.prevent="handleChangeChat">
         <div>
             <figure class="avatar">
                 <img :src="''" class="rounded-circle" alt="image">
@@ -39,6 +39,11 @@ export default {
         thread: {
             type: Object,
             required: true,
+        }
+    },
+    methods: {
+        handleChangeChat() {
+            this.$bus.emit('THREAD_CHANGED', this.thread);
         }
     }
 }

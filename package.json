@@ -36,6 +36,7 @@
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
         "vue": "^2.6.12",
-        "vue-feather-icons": "^5.1.0"
+        "vue-feather-icons": "^5.1.0",
+        "vue-super-eventbus": "^2.4.1"
     }
 }
