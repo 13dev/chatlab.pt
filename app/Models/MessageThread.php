@@ -18,7 +18,7 @@ class MessageThread extends UuidModel
     protected $fillable = [
         'last_read',
         'title',
-        'model'
+        'model',
     ];
 
     /**
