@@ -1,13 +1,9 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-use App\Http\Resources\MessageThreadResource;
-use App\Models\MessageThread;
-use Illuminate\Support\Facades\Request as RequestAlias;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +16,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [TestController::class, 'test'])->middleware('web');
+Route::middleware('web')->group(function () {
+
+    Route::get('/', [ChatController::class, '__invoke']);
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

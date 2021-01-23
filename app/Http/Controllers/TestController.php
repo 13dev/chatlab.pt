@@ -12,9 +12,11 @@ class TestController extends Controller
 {
     public function index()
     {
-        $data = MessageThreadParticipant::find(21)->with('thread', 'user')->get();
+        $data = MessageThreadParticipant::find(21)
+            ->with('thread', 'user')
+            ->get();
 
-        $user = new MessageThreadParticipantResource();
+        $user = new MessageThreadParticipantResource($data);
 
         return view('test', ['user' => $user]);
     }
@@ -22,14 +24,11 @@ class TestController extends Controller
     public function test()
     {
         $threads = MessageThreadResource::collection(
-            MessageThread::with('participants', 'messages')->get()
-        )->toJson();
+            MessageThread::all()
+        );
 
         $user = '2ere2';
 
-        return Inertia::render(
-            'Chat/Index',
-            compact('threads', 'user')
-        );
+
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MessageThreadResource;
 use App\Models\MessageThread;
-use App\Services\CreateThreadService;
+use App\Services\Threads\CreateThreadService;
 use Illuminate\Http\Request;
 
 class MessageThreadController extends Controller

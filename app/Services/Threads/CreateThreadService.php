@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Threads;
 
 use App\Models\MessageThread;
 use App\Repositories\MessageThreadParticipantRepository;
