@@ -60,7 +60,7 @@ export default {
         updateThreads: _.debounce(function () {
             let value = this.searchTerm.toLowerCase().trim();
 
-            $('.list-group-item').each(() => {
+            $('.list-group-item').each(function () {
                 let conversationTitle = $(this)
                     .find('.users-list-body h5')
                     .text()
@@ -74,7 +74,7 @@ export default {
 
                 $(this).hide();
             });
-        }, 500),
+        }, 300),
     }
 
 }
