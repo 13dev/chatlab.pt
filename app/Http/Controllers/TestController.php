@@ -28,7 +28,5 @@ class TestController extends Controller
         );
 
         $user = '2ere2';
-
-
     }
 }

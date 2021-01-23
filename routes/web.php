@@ -17,10 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('web')->group(function () {
-
     Route::get('/', [ChatController::class, '__invoke']);
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
