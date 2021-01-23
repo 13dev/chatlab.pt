@@ -32,10 +32,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-
-
-
-
 // User Routes
 
 // User Routes
