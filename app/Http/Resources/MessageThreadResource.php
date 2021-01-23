@@ -17,7 +17,7 @@ class MessageThreadResource extends JsonResource
             ),
             'participants' => MessageThreadParticipantResource::collection(
                 $this->whenLoaded('participants')),
-            'avatar' => url($this->avatar)
+            'avatar' => url($this->avatar),
         ];
     }
 }
