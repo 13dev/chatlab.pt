@@ -16,7 +16,7 @@ return [
     */
     'user_avatar' => [
         'folder' => 'users-avatar',
-        'default' => asset('images/avatar/default_avatar.png'),
+        'default' => public_path('images/avatar/default_avatar.png'),
     ],
 
     /*
