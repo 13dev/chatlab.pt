@@ -12,7 +12,9 @@ class TestController extends Controller
 {
     public function index()
     {
-        $user = new MessageThreadParticipantResource(MessageThreadParticipant::find(21)->with('thread', 'user')->get());
+        $data = MessageThreadParticipant::find(21)->with('thread', 'user')->get();
+
+        $user = new MessageThreadParticipantResource();
 
         return view('test', ['user' => $user]);
     }
@@ -22,7 +24,7 @@ class TestController extends Controller
             MessageThread::with('participants', 'messages')->get()
         )->toJson();
 
-        $user = '2ere';
+        $user = '2ere2';
 
         return Inertia::render(
             'Chat/Index',
