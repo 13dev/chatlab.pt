@@ -20,18 +20,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function (RequestAlias $request) {
-    $threads = MessageThreadResource::collection(
-        MessageThread::with('participants', 'messages')->get()
-    )->toJson();
-
-    $user = \App\Models\User::first();
-
-    return inertia(
-        'Chat/Index',
-        compact('threads', 'user')
-    );
-})->middleware('web');
+Route::get('/', [TestController::class, 'test'])->middleware('web');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
