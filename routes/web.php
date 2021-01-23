@@ -7,6 +7,7 @@ use App\Http\Resources\MessageThreadResource;
 use App\Models\MessageThread;
 use Illuminate\Support\Facades\Request as RequestAlias;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,13 @@ Route::get('/', function (RequestAlias $request) {
         MessageThread::with('participants', 'messages')->get()
     )->toJson();
 
-    return view(
-        'chatlab.chat',
-        compact('threads')
+    $user = \App\Models\User::first();
+
+    return inertia(
+        'Chat/Index',
+        compact('threads', 'user')
     );
-});
+})->middleware('web');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

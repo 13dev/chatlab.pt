@@ -2,7 +2,7 @@
     <div class="chat-header">
         <div class="chat-header-user">
             <figure class="avatar">
-                <img :src="user.image" class="rounded-circle" alt="image">
+                <img :src="user.avatar" class="rounded-circle" alt="image">
             </figure>
             <div>
                 <h5>{{ user.name }}</h5>
@@ -73,7 +73,7 @@ export default {
     props: {
         user: {
             type: Object,
-            required: false,
+            required: true,
         }
     },
     methods: {
