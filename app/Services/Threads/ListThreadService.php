@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Services\Threads;
 
 use App\Repositories\MessageThreadRepository;
@@ -12,7 +11,7 @@ class ListThreadService
      */
     private MessageThreadRepository $messageThreadRepository;
 
-    public function __construct(MessageThreadRepository  $messageThreadRepository)
+    public function __construct(MessageThreadRepository $messageThreadRepository)
     {
         $this->messageThreadRepository = $messageThreadRepository;
     }
