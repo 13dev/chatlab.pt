@@ -17,7 +17,8 @@ class TestController extends Controller
         return view('test', ['user' => $user]);
     }
 
-    public function test() {
+    public function test()
+    {
         $threads = MessageThreadResource::collection(
             MessageThread::with('participants', 'messages')->get()
         )->toJson();
