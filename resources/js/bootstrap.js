@@ -1,22 +1,15 @@
 import Vue from 'vue';
 
+window.JQuery = window.$ = require('jquery');
 require('popper.js');
 require('bootstrap');
-window.feather = require('feather-icons');
-feather.replace();
-
 
 window._ = require('lodash');
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
 window.axios = require('axios');
 window.Vue = require('vue');
-window.JQuery = window.$ = require('jquery');
+window.feather = require('feather-icons');
+
+feather.replace();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -32,9 +25,9 @@ Vue.component('sidebar-items-friend', require('./components/Sidebar/Items/Friend
 
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
-    if (jQuery.browser.mobile) {
-        $(this).closest('.sidebar-group').removeClass('mobile-open');
-    }
+    // if (JQuery.browser.mobile) {
+    //     $(this).closest('.sidebar-group').removeClass('mobile-open');
+    // }
 });
 
 //Register all components on components folder.

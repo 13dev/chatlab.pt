@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\MessageThreadResource;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +24,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        MessageThreadResource::withoutWrapping();
+
+        Model::created(function ($model) {
+            debugbar()->info('Created the', $model);
+        });
+
+        Model::saved(function ($model) {
+            debugbar()->info('Saved the', $model);
+        });
+
+        Model::updated(function ($model) {
+            debugbar()->info('Updated the', $model);
+        });
     }
 }

@@ -1,12 +1,12 @@
 <template>
     <div class="content">
         <div class="sidebar-group">
-<!--            <sidebar-chat :threads="JSON.parse(this.threads)"></sidebar-chat>-->
+            <sidebar-chat :threads="threads.data"></sidebar-chat>
         </div>
         <div class="chat">
-<!--            <chat-header :user="user"></chat-header>-->
-<!--            <chat-body :thread="thread"></chat-body>-->
-<!--            <chat-footer></chat-footer>-->
+            <chat-header :user="user"></chat-header>
+<!--            <chat-body ></chat-body>-->
+            <chat-footer></chat-footer>
         </div>
         <div class="sidebar-group mobile-open">
             <!-- @include('chatlab.includes.sidebar-group2-contact-information') -->
@@ -20,7 +20,7 @@ export default {
 
     name: "Index",
     created() {
-        console.log(this.threads);
+        console.log(this.$activeChat);
     }
 
 }
