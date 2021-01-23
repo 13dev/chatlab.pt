@@ -14,10 +14,8 @@ return [
     |           in database.
     |
     */
-    'user_avatar' => [
-        'folder' => 'users-avatar',
-        'default' => public_path('images/avatar/default_avatar.png'),
-    ],
+    'user_avatar' => 'images/avatar/default_avatar.png',
+    'thread_avatar' => 'images/avatar/default_avatar_thread.png',
 
     /*
     |--------------------------------------------------------------------------

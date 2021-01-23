@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-footer">
+    <div class="chat-footer" v-if="thread">
         <form>
             <div>
                 <button class="btn btn-light mr-3" data-toggle="tooltip" title="" type="button"
