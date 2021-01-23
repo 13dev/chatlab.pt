@@ -75,7 +75,6 @@ export default {
             this.$inertia.post('/messages', data, {
                 onSuccess: () => {
                     console.log(this.$page);
-
                 },
                 onError(errors) {
                     console.log(222);
