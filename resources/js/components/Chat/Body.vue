@@ -29,6 +29,13 @@ export default {
             required: true,
         }
     },
+    on: {
+        THREAD_CHANGED(thread) {
+            // Obter mensagens
+            // setar as mensagens
+            // fazer scroll para fundo
+        }
+    },
     components: {Message}
 }
 </script>

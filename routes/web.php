@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('web')->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/', ChatController::class);
+
+    // Messages Routes
+    Route::resource('messages', MessageController::class);
+
+    // User Routes
+    Route::resource('user', UserController::class);
 });
 
 Route::get('/dashboard', function () {
@@ -26,11 +32,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// User Routes
 
-Route::resource('messages', MessageController::class);
 
-Route::resource('user', UserController::class);
+
 
 // User Routes
 

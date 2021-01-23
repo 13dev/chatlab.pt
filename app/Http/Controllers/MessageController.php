@@ -6,6 +6,7 @@ use App\Http\Resources\MessageResource;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MessageController extends Controller
 {
@@ -30,7 +31,6 @@ class MessageController extends Controller
     /**
      * @param Request $request
      * @param MessageValidator $validator
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(Request $request, MessageValidator $validator)
@@ -41,7 +41,9 @@ class MessageController extends Controller
 
         $response = $this->repository->create($data);
 
-        return MessageResource::collection($response);
+        return redirect()
+            ->back()
+            ->with('response', new MessageResource($response));
     }
 
     /**

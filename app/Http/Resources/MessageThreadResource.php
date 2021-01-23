@@ -9,6 +9,7 @@ class MessageThreadResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->getKey(),
             'lastRead' => $this->last_read,
             'title' => $this->title,
             'messages' => MessageResource::collection(

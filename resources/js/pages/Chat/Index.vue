@@ -4,7 +4,7 @@
             <sidebar-chat :threads="threads.data"></sidebar-chat>
         </div>
         <div class="chat">
-            <chat-header :user="user"></chat-header>
+            <chat-header></chat-header>
 <!--            <chat-body ></chat-body>-->
             <chat-footer></chat-footer>
         </div>

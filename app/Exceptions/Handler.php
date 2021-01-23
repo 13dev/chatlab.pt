@@ -38,9 +38,9 @@ class Handler extends ExceptionHandler
 
     public function report(Throwable $exception)
     {
-        if ($exception instanceof ValidationException) {
-            dd('Validation exception');
-        }
+//        if ($exception instanceof ValidationException) {
+//            dd('Validation exception');
+//        }
 
         parent::report($exception);
     }

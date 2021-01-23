@@ -2,16 +2,19 @@
     <div class="chat-header">
         <div class="chat-header-user">
             <figure class="avatar">
-                <img :src="user.avatar" class="rounded-circle" alt="image">
+                <img src="" class="rounded-circle" alt="image">
             </figure>
-            <div>
-                <h5>{{ user.name }}</h5>
+            <div v-if="!thread">
+                <h5>Please choose a conversation</h5>
+            </div>
+            <div v-else>
+                <h5>{{ thread.title }}</h5>
                 <small class="text-success">
                     <i>writing...</i>
                 </small>
             </div>
         </div>
-        <div class="chat-header-action">
+        <div class="chat-header-action" v-if="thread">
             <ul class="list-inline">
                 <li class="list-inline-item d-xl-none d-inline">
                     <a href="#" class="btn btn-outline-light mobile-navigation-button">
@@ -70,10 +73,14 @@
 <script>
 export default {
     name: "Header",
-    props: {
-        user: {
-            type: Object,
-            required: true,
+    data(){
+        return {
+            thread: null,
+        }
+    },
+    on: {
+        THREAD_CHANGED(thread) {
+            this.thread = thread;
         }
     },
     methods: {

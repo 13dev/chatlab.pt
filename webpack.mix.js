@@ -23,6 +23,11 @@ const mix = require('laravel-mix');
 // });
 
 
-mix.js('resources/js/app.js', 'public/js').vue().sass('resources/css/app.scss', 'public/css', [
-    require('postcss-import'),
-]);
+mix.js('resources/js/app.js', 'public/js')
+    .vue()
+    .sass('resources/css/app.scss', 'public/css', [
+        require('postcss-import'),
+    ])
+    .postCss('resources/css/login.css', 'public/css', [
+        require("tailwindcss"),
+    ]);

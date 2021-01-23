@@ -20,6 +20,6 @@ class ListThreadService
     {
         debugbar()->log('Calling ListThreadSerice');
 
-        return $this->messageThreadRepository->paginate(5);
+        return $this->messageThreadRepository->paginate(10);
     }
 }

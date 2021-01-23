@@ -13,7 +13,6 @@ class ChatController extends Controller
     public function __invoke(ListThreadService $listThreadService)
     {
         debugbar()->log('Calling Chat Controller');
-
         $threads = MessageThreadResource::collection($listThreadService());
 
         //TODO: Change to Auth user only
