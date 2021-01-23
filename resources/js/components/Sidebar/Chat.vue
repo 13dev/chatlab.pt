@@ -23,7 +23,10 @@
             </ul>
         </header>
         <form>
-            <input type="text" class="form-control" placeholder="Search chats">
+            <input type="text" class="form-control" placeholder="Search chats"
+                   v-model="searchTerm"
+                   @input="updateThreads()">
+
         </form>
         <div class="sidebar-body">
             <ul class="list-group list-group-flush">
@@ -48,8 +51,28 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            searchTerm: '',
+        }
+    },
     methods: {
+        updateThreads: _.debounce(function (e) {
+            let value = this.searchTerm.toLowerCase().trim();
 
+            $('.list-group-item').each(() => {
+                let conversationTitle = $(this).find('.users-list-body h5')
+                    .text()
+                    .toLowerCase()
+                    .trim();
+
+                if (conversationTitle.indexOf(value) !== -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }, 500),
     }
 
 }
