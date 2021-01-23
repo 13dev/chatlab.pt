@@ -14,8 +14,13 @@ new Vue({
         props: {
             initialPage: JSON.parse(app.dataset.page),
             resolveComponent: name => require(`./pages/${name}`).default,
+            transformProps: props => {
+                return {
+                    ...props,
+                    errors: new Error(props.errors),
+                }
+            },
         },
     }),
 }).$mount(app);
-
 

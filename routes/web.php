@@ -26,9 +26,11 @@ Route::get('/', function (RequestAlias $request) {
         MessageThread::with('participants', 'messages')->get()
     )->toJson();
 
+    $user = \App\Models\User::first();
+
     return inertia(
         'Chat/Index',
-        compact('threads')
+        compact('threads', 'user')
     );
 })->middleware('web');
 

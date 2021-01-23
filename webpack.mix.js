@@ -11,6 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
+// const path = require('path')
+// mix.webpackConfig({
+//     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
+//     resolve: {
+//         alias: {
+//             'vue$': 'vue/dist/vue.runtime.esm.js',
+//             '@': path.resolve('./resources/js'),
+//         },
+//     },
+// });
+
+
 mix.js('resources/js/app.js', 'public/js').vue().sass('resources/css/app.scss', 'public/css', [
     require('postcss-import'),
 ]);

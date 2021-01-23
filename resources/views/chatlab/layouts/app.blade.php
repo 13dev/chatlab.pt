@@ -26,7 +26,6 @@
     <div class="layout">
         @include('chatlab.includes.navigation-chat')
         @inertia
-
     </div>
 </body>
 </html>

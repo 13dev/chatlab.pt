@@ -1,11 +1,11 @@
 <template>
     <div class="content">
         <div class="sidebar-group">
-            <sidebar-chat></sidebar-chat>
+            <sidebar-chat :threads="JSON.parse(this.threads)"></sidebar-chat>
         </div>
         <div class="chat">
             <chat-header :user="user"></chat-header>
-            <chat-body :thread="thread"></chat-body>
+<!--            <chat-body :thread="thread"></chat-body>-->
             <chat-footer></chat-footer>
         </div>
         <div class="sidebar-group mobile-open">
@@ -16,14 +16,13 @@
 
 <script>
 export default {
-    props: ['user', 'thread'],
+    props: ['user','threads'],
+
     name: "Index",
-    data() {
-      return {
-          user: {},
-          thread: {},
-      }
-    },
+    mounted() {
+
+    }
+
 }
 </script>
 
