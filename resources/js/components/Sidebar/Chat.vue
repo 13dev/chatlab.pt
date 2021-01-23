@@ -57,20 +57,22 @@ export default {
         }
     },
     methods: {
-        updateThreads: _.debounce(function (e) {
+        updateThreads: _.debounce(function () {
             let value = this.searchTerm.toLowerCase().trim();
 
             $('.list-group-item').each(() => {
-                let conversationTitle = $(this).find('.users-list-body h5')
+                let conversationTitle = $(this)
+                    .find('.users-list-body h5')
                     .text()
                     .toLowerCase()
                     .trim();
 
                 if (conversationTitle.indexOf(value) !== -1) {
                     $(this).show();
-                } else {
-                    $(this).hide();
+                    return;
                 }
+
+                $(this).hide();
             });
         }, 500),
     }
