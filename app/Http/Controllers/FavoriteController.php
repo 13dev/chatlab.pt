@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
-
     private FavoriteRepository $repository;
 
     public function __construct(FavoriteRepository $repository)
@@ -34,7 +33,7 @@ class FavoriteController extends Controller
      */
     public function store(Request $request, UserValidator $validator)
     {
-        $data = $request->only('user_id','favorited_id');
+        $data = $request->only('user_id', 'favorited_id');
 
         $response = $this->repository->create($data);
 
@@ -47,9 +46,9 @@ class FavoriteController extends Controller
      */
     public function show($id)
     {
-      $data = $this->repository->get($id);
+        $data = $this->repository->get($id);
 
-      return FavoriteResource::collection($id);
+        return FavoriteResource::collection($id);
     }
 
     public function edit($id)
@@ -66,9 +65,9 @@ class FavoriteController extends Controller
      */
     public function update(Request $request, $id, UserValidator $validator)
     {
-        $data = $request->only('user_id','favorited_id');
+        $data = $request->only('user_id', 'favorited_id');
 
-        $response = $this->repository->update($data,$id);
+        $response = $this->repository->update($data, $id);
 
         return FavoriteResource::collection($response);
     }
@@ -79,8 +78,8 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-       $data = $this->repository->get($id);
+        $data = $this->repository->get($id);
 
-       return FavoriteResource::collection($data);
+        return FavoriteResource::collection($data);
     }
 }
