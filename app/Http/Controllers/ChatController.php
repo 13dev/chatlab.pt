@@ -15,11 +15,8 @@ class ChatController extends Controller
         debugbar()->log('Calling Chat Controller');
         $threads = MessageThreadResource::collection($listThreadService());
 
-        //TODO: Change to Auth user only
-        $user = new UserResource(Auth::user() ?: User::first());
-
         debugbar()->log($threads);
 
-        return inertia('Chat/Index', compact('threads', 'user'));
+        return inertia('Chat/Index', compact('threads'));
     }
 }
