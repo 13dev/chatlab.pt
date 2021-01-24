@@ -26,7 +26,7 @@ class Message extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function sender()
+    public function participant()
     {
         return $this->belongsTo(Participant::class, 'participant_id');
     }

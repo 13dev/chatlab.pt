@@ -8,7 +8,6 @@ use App\Models\Favorite;
 use App\Repositories\FavoriteRepository;
 use App\Services\Threads\ListThreadService;
 use Auth;
-use function MongoDB\BSON\toJSON;
 
 class ChatController extends Controller
 {

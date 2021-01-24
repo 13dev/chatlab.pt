@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Events\SendMessage;
 use App\Http\Resources\MessageResource;
+use App\Models\Message;
 use App\Models\Participant;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class MessageController extends Controller
 {
@@ -47,13 +48,18 @@ class MessageController extends Controller
             'thread_id' => $data['thread_id'],
         ])->getKey();
 
+        /** @var Model $response */
         $response = $this->repository->create($data);
 
-        broadcast(new SendMessage($data['thread_id'], $data['body']));
+        $message = Message::with('participant.user')
+            ->where('id', $response->getKey())
+            ->firstOrFail();
+
+        broadcast(new SendMessage($message))->toOthers();
 
         return redirect()
             ->back()
-            ->with('response', new MessageResource($response));
+            ->with('response', new MessageResource($message));
     }
 
     /**

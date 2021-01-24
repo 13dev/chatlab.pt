@@ -10,8 +10,14 @@ class MessageResource extends JsonResource
     {
         return [
             'thread' => $this->thread->id,
-            'sender' => $this->sender->id,
+            'user' => $this->when(
+                $this->relationLoaded('participant') && $this->participant->relationLoaded('user'),
+                function () {
+                    return new UserResource($this->participant->user);
+                }
+            ),
             'body' => $this->body,
+            'time' => optional($this->created_at)->diffForHumans(),
         ];
     }
 }

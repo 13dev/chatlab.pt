@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Actions\ThreadAuthBroadcastAction;
+use App\Broadcasting\ThreadChannel;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('thread.{threadId}', ThreadAuthBroadcastAction::class);
+Broadcast::channel('thread.{threadId}', ThreadChannel::class);

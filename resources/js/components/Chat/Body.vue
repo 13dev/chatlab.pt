@@ -12,14 +12,12 @@
         </div>
         <div class="messages">
             <chat-message v-for="message in messages" :message="message" :key="message.id"></chat-message>
-            <!--            <div class="message-item messages-divider" data-label="1 message unread"></div>-->
-            ola
         </div>
     </div>
     <div class="chat-body empty-thread" v-else>
         <p class="lead"> Welcome to ChatLab </p>
 
-        <img src="https://i.imgur.com/AAAWagx.png" alt="" style ="    opacity: 0.3;
+        <img src="https://i.imgur.com/AAAWagx.png" alt="" style="    opacity: 0.3;
     filter: grayscale(50%);">
     </div>
 
@@ -27,8 +25,6 @@
 </template>
 
 <script>
-import Message from "./Message";
-
 export default {
     name: "Body",
     data() {
@@ -39,33 +35,44 @@ export default {
         }
     },
     created() {
+        window.Echo.connector.pusher.connection.bind('connected', () => {
+            console.log('connected');
+        });
 
 
     },
     methods: {},
     on: {
+        SENDED_MESSAGE(message) {
+            this.messages.push(message);
+        },
+
         THREAD_CHANGED(thread) {
+
+            if (this.thread != null) {
+                Echo.leave(`thread.${this.thread.id}`);
+            }
+
             this.thread = thread;
-
             console.log('Thread changed on body chat.');
+            console.log('.sendmessage1');
 
-            Echo.join('thread.' + thread.id)
-                .here(user => {
-                    console.log(1);
-                    this.users = user;
+            Echo.join(`thread.${thread.id}`)
+                .here(users => {
+                    console.log('Active users', users);
+                    this.users = users;
                 })
                 .joining(user => {
-                    console.log(2);
+                    console.log('User Joining', user);
                     this.users.push(user);
                 })
                 .leaving(user => {
-                    console.log(3);
+                    console.log('Disconnected...', user);
                     this.users = this.users.filter(u => u.id !== this.$page.props.user.id);
                 })
-                .listen('send-message', (event) => {
-                    console.log('send-message');
-                    console.log(event);
-                    this.messages.push(event.chat);
+                .listen('.send.message', (event) => {
+                    console.log('Reciving message...', event.message);
+                    this.messages.push(event.message);
                 })
                 .listenForWhisper('typing', user => {
                     // this.activeUser = user;
@@ -76,6 +83,7 @@ export default {
                     //     this.activeUser = false;
                     // }, 1000);
                 })
+
 
             // setar as mensagens
             // fazer scroll para fundo
