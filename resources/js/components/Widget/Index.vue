@@ -28,19 +28,19 @@
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                aria-controls="home" aria-selected="true"
-                               @click.prevent="changeWidget(1)"
+                               @click.prevent="changeWidget(true)"
                             >About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                aria-controls="profile" aria-selected="false"
-                               @click.prevent="changeWidget(2)"
+                               @click.prevent="changeWidget(false)"
                             >Media</a>
                         </li>
                     </ul>
                 </div>
-                <widget-item-about v-if="widget == 1"></widget-item-about>
-                <widget-item-media v-if="widget == 2"></widget-item-media>
+                <widget-item-about v-if="widget"></widget-item-about>
+                <widget-item-media v-else></widget-item-media>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@ export default {
     name: "Index",
     data() {
         return {
-            widget: 1,
+            widget: true,
             thread: {
                 avatar: '',
                 title: '',
@@ -69,8 +69,7 @@ export default {
             this.$bus.emit('WIDGET_CHANGED', false);
         },
         changeWidget(mode) {
-            this.widget = mode == 1 ? 2 : 1;
-            this.widget = mode;
+            this.widget = !mode;
         }
     }
 
