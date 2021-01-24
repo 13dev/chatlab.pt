@@ -15,7 +15,7 @@
         </form>
         <div class="sidebar-body">
             <ul class="list-group list-group-flush users-list">
-
+                    <sidebar-items-favorite></sidebar-items-favorite>
             </ul>
         </div>
     </div>
@@ -24,12 +24,6 @@
 <script>
 export default {
         name: "Favorites",
-        props: {
-            user:{
-                type: Object,
-                required: false,
-            }
-        },
 }
 </script>
 

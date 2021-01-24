@@ -64,10 +64,6 @@
     flex: 1;
 }
 
-.layout .content .sidebar-group .sidebar:not(.active) {
-    display: none;
-}
-
 .layout .content .sidebar-group .sidebar > header {
     display: -webkit-box;
     display: -webkit-flex;

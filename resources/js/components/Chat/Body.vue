@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="chat-body empty-thread" v-else>
-      <p class="lead"><h3> Welcome to ChatLab </h3></p>
+      <p class="lead"> Welcome to ChatLab </p>
 
         <img src="https://i.imgur.com/AAAWagx.png" alt="" style ="    opacity: 0.3;
     filter: grayscale(50%);">
