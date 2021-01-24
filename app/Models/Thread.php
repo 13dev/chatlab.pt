@@ -10,6 +10,8 @@ class Thread extends UuidModel
 {
     use HasFactory, Uuid;
 
+    protected $table = 'message_threads';
+
     /**
      * The attributes that are mass assignable.
      *

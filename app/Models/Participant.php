@@ -10,6 +10,8 @@ class Participant extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'message_thread_participants';
+
     protected $fillable = [
         'thread_id',
         'user_id',
