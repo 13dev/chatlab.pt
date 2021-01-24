@@ -24,42 +24,34 @@
                 <ul class="list-inline social-links">
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-facebook" data-toggle="tooltip" title="" data-original-title="Facebook">
-                            <i class="fa fa-facebook"></i>
+                            <i class="fa icon-facebook"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-twitter" data-toggle="tooltip" title="" data-original-title="Twitter">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa icon-twitter"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-dribbble" data-toggle="tooltip" title="" data-original-title="Dribbble">
-                            <i class="fa fa-dribbble"></i>
+                            <i class="fa icon-dribbble"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-whatsapp" data-toggle="tooltip" title="" data-original-title="Whatsapp">
-                            <i class="fa fa-whatsapp"></i>
-                        </a>
-                    </li>
+
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-linkedin" data-toggle="tooltip" title="" data-original-title="Linkedin">
-                            <i class="fa fa-linkedin"></i>
+                            <i class="fa icon-linkedin"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-google" data-toggle="tooltip" title="" data-original-title="Google">
-                            <i class="fa fa-google"></i>
+                            <i class="fa icon-google"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-floating btn-behance" data-toggle="tooltip" title="" data-original-title="Behance">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </li>
+
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-floating btn-instagram" data-toggle="tooltip" title="" data-original-title="Instagram">
-                            <i class="fa fa-instagram"></i>
+                            <i class="fa icon-instagram"></i>
                         </a>
                     </li>
                 </ul>
