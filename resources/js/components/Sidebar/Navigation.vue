@@ -6,7 +6,7 @@
                 <li class="logo">
                     <a href="">
                         <div class="loga">
-                            <img  src="images/logo/logo2.png" alt="image">
+                            <img src="images/logo/logo2.png" alt="image">
                         </div>
 
                     </a>
@@ -77,46 +77,53 @@ export default {
     data() {
         return {
             mode: null,
-            user : this.$page.props.user,
+            user: this.$page.props.user,
         }
     },
     created() {
-        if(localStorage.getItem('MODE') === null){
-            localStorage.setItem('MODE', true);
-            this.mode = true;
-        }else{
+        if (localStorage.getItem('MODE') === null) {
+            localStorage.setItem('MODE', 2);
+            this.mode = 2;
+        } else {
             this.mode = localStorage.getItem('MODE');
         }
+        this.backgroundColor(this.mode);
     },
     methods: {
         changeMode() {
-            this.mode = !this.mode;
-            let body = $('body');
+
+            this.mode = this.mode == 1 ? 2 : 1;
+
             localStorage.setItem('MODE', this.mode);
 
-            if (!this.mode) {
+            this.backgroundColor(this.mode);
+        },
+
+        handleChangeSidebar(id, event) {
+            this.$bus.emit('SIDEBAR_CHANGED', id);
+        },
+
+        backgroundColor(mode) {
+            let body = $('body');
+            if (mode == 1) {
                 body.addClass('dark');
                 return;
             }
-
             body.removeClass('dark');
-        },
-
-        handleChangeSidebar(id,event) {
-            this.$bus.emit('SIDEBAR_CHANGED', id);
         }
     }
 }
 </script>
 
 <style scoped>
-.loga img{
+.loga img {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
 }
-.loga{
+
+.loga {
     display: inline-block;
     margin-bottom: 0;
     height: 3.5rem;
