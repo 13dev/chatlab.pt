@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="messages" >
-            <message v-for="message in thread.messages" :message="message" :key="message.id"></message>
-            <!--            <div class="message-item messages-divider" data-label="1 message unread"></div>-->
+            <!--<message v-for="message in thread.messages" :message="message" :key="message.id"></message>
+                     <div class="message-item messages-divider" data-label="1 message unread"></div>-->
             ola
         </div>
     </div>
