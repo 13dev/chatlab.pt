@@ -82,7 +82,6 @@ export default {
     on: {
         THREAD_CHANGED(thread) {
             this.thread = thread;
-            console.log(this.thread);
         }
     },
     methods: {

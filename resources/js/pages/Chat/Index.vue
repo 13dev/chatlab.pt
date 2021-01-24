@@ -15,7 +15,7 @@
                <chat-footer></chat-footer>
            </div>
            <div class="sidebar-group mobile-open">
-               <widget-index v-if="widget==true"></widget-index>
+               <widget-index v-show="widget==true"></widget-index>
             </div>
         </div>
     </div>

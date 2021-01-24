@@ -14,9 +14,9 @@
             <div class="pl-4 pr-4">
                 <div class="text-center">
                     <figure class="avatar avatar-xl mb-4">
-                        <img src="''" class="rounded-circle" alt="image">
+                        <img :src="thread.avatar" class="rounded-circle" alt="image">
                     </figure>
-                    <h5 class="mb-1">Mirabelle Tow</h5>
+                    <h5 class="mb-1">{{thread.title}}</h5>
                     <small class="text-muted font-italic">Last seen: Today</small>
 
                     <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
@@ -46,6 +46,12 @@ export default {
     data(){
         return{
             widget: 1,
+            thread: null,
+        }
+    },
+    on: {
+        THREAD_CHANGED(thread) {
+            this.thread = thread;
         }
     },
     methods: {
@@ -53,8 +59,8 @@ export default {
             this.$bus.emit('WIDGET_CHANGED', false);
         },
         changeWidget(mode){
-            this.widget = mode == 1 ? 2 : 1
-            this.widget = mode
+            this.widget = mode == 1 ? 2 : 1;
+            this.widget = mode;
         }
     }
 
