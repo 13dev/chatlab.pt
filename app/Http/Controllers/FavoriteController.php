@@ -15,7 +15,6 @@ class FavoriteController extends Controller
         $this->repository = $repository;
     }
 
-
     public function index()
     {
         $data = $this->repository->all();
