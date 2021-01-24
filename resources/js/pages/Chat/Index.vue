@@ -6,7 +6,7 @@
             <div class="sidebar-group">
                 <sidebar-chat :threads="threads.data" v-show="sidebar === 1"></sidebar-chat>
                 <sidebar-friends v-show="sidebar === 2"></sidebar-friends>
-                <sidebar-favorites v-show="sidebar === 3"></sidebar-favorites>
+                <sidebar-favorites :favorites="favorites" v-show="sidebar === 3"></sidebar-favorites>
 
            </div>
            <div class="chat">
@@ -27,7 +27,7 @@
 import feather from 'feather-icons'
 
 export default {
-    props: ['threads'],
+    props: ['threads', 'favorites'],
 
     name: "Index",
    data(){
@@ -38,6 +38,7 @@ export default {
    },
     mounted(){
         feather.replace()
+
     },
     on: {
         SIDEBAR_CHANGED(id) {
