@@ -43,11 +43,9 @@ export default {
     on: {
         SIDEBAR_CHANGED(id) {
             this.sidebar = id;
-            console.log(this.sidebar);
         },
         WIDGET_CHANGED(widget) {
             this.widget = widget;
-
          }
     },
 }
