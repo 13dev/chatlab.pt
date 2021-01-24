@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
+use function MongoDB\BSON\toJSON;
 
 class UserController extends Controller
 {

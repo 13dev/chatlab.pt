@@ -1,8 +1,8 @@
 <template>
-    <li class="list-group-item">
+    <li class="list-group-item" v-if="thread.user_id.id == user.id">
         <div class="users-list-body">
             <div>
-                <h5>ya </h5>
+                <h5>{{ thread.favorited_id.name}} </h5>
                 <p>enrola essa ;)</p>
             </div>
             <div class="users-list-action">
@@ -23,8 +23,19 @@
 </template>
 
 <script>
-export default{
-    name : "FavoriteItem",
+export default {
+    name: "FavoriteItem",
+    props: {
+        thread: {
+            type: Object,
+            required: true,
+        }
+    },
+    data() {
+        return {
+            user: this.$page.props.user
+        }
+    },
 }
 </script>
 

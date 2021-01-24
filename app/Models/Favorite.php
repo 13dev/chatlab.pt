@@ -14,18 +14,19 @@ class Favorite extends UuidModel
      * @var array
      */
     protected $fillable = [
-        'id',
         'user_id',
         'favorited_id',
     ];
 
+    public $timestamps = false;
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function favorited()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'favorited_id');
     }
 }
