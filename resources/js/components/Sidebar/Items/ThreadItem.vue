@@ -1,5 +1,5 @@
 <template>
-    <li class="list-group-item" @click.prevent="handleChangeChat">
+    <li class="list-group-item" :class="{ 'open-chat': this.activeChat == this.thread.id }" @click.prevent="handleChangeChat">
         <div>
             <figure class="avatar">
                 <img :src="thread.avatar" class="rounded-circle" alt="image">
@@ -7,7 +7,7 @@
         </div>
         <div class="users-list-body">
             <div>
-            <h5>{{ thread.title }}</h5>
+                <h5>{{ thread.title }}</h5>
                 <p>É essas merdas</p>
             </div>
             <div class="users-list-action">
@@ -41,13 +41,25 @@ export default {
             required: true,
         }
     },
+    data(){
+        return {
+            activeChat : null
+        }
+    },on : {
+        ACTIVE_CHAT(activeChat){
+            //to fixx
+            this.activeChat = activeChat;
+        }
+    },
     methods: {
-        handleChangeChat() {
-            this.$activeChat = this.thread.id;
+    handleChangeChat(){
+        if(this.activeChat != this.thread.id ){
             this.$bus.emit('THREAD_CHANGED', this.thread);
             this.$bus.emit('WIDGET_CHANGED', false);
+            this.$bus.emit('ACTIVE_CHAT',this.thread.id);
         }
-    }
+    },
+}
 }
 </script>
 
