@@ -48,7 +48,6 @@ $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-it
 import Echo from 'laravel-echo';
 
 window.Pusher = require('pusher-js');
-
 window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,

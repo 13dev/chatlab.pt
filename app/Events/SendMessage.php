@@ -2,9 +2,9 @@
 
 namespace App\Events;
 
+use App\Models\Message;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -13,36 +13,33 @@ class SendMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public string $thread;
-    public string $message;
+    public Message $message;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(string $thread, string $message)
+    public function __construct(Message $message)
     {
-        $this->thread = $thread;
         $this->message = $message;
-        debugbar()->info('SendMessageEvent to thread', $this->thread, ' message: ', $this->message);
+        debugbar()->info('SendMessageEvent to thread', $message->thread->getKey());
     }
 
     public function broadcastOn()
     {
-        return new PresenceChannel('thread.'.$this->thread);
+        return new PresenceChannel('thread.' . $this->message->thread->getKey());
     }
 
     public function broadcastWith()
     {
         return [
             'message' => $this->message,
-            'thread' => $this->thread,
         ];
     }
 
     public function broadcastAs()
     {
-        return 'send-message';
+        return 'send.message';
     }
 }

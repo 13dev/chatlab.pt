@@ -19,12 +19,9 @@ class ThreadChannel
         $thread = Thread::find($threadId);
 
         if ($thread !== null) {
-            $result = $thread->participants
-                ->contains('user_id', $user->getKey());
-
-            logs()->info('Broadcast result: ' . $result);
-
-            return $result;
+            if($thread->participants->contains('user_id', $user->getKey())) {
+                return ['id' => $user->getKey(), 'name' => $user->name];
+            }
         }
 
         logs()->error('Thread not found broadcast: ' . $thread);

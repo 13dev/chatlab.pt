@@ -49,11 +49,14 @@ class MessageController extends Controller
 
         $response = $this->repository->create($data);
 
-        broadcast(new SendMessage($data['thread_id'], $data['body']));
+        debugbar()->info($response->with('participant.user')->first());
+        $message = $response->with('participant.user')->first();
+
+        broadcast(new SendMessage($message));
 
         return redirect()
             ->back()
-            ->with('response', new MessageResource($response));
+            ->with('response', new MessageResource($message));
     }
 
     /**
