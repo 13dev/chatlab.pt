@@ -44,7 +44,7 @@
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <figure class="avatar mr-3 item-rtl">
-                                            <img src="./dist/media/img/man_avatar4.jpg" class="rounded-circle"
+                                            <img src="" class="rounded-circle"
                                                  alt="image">
                                         </figure>
                                     </div>
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="city" class="col-form-label">City</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="city" placeholder="Ex: Columbia">
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="website" class="col-form-label">Website</label>
                                 <input type="text" class="form-control" id="website" placeholder="https://">
-                            </div>
+                            </div>-->
                         </form>
                     </div>
                     <div class="tab-pane" id="about" role="tabpanel">
@@ -102,7 +102,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-facebook">
-                                            <i class="ti-facebook"></i>
+                                            <i class="icon-facebook"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-twitter">
-                                            <i class="ti-twitter"></i>
+                                            <i class="icon-twitter"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-instagram">
-                                            <i class="ti-instagram"></i>
+                                            <i class="icon-instagram"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -132,7 +132,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-linkedin">
-                                            <i class="ti-linkedin"></i>
+                                            <i class="icon-linkedin"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-dribbble">
-                                            <i class="ti-dribbble"></i>
+                                            <i class="icon-dribbble"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-youtube">
-                                            <i class="ti-youtube"></i>
+                                            <i class="icon-youtube"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -162,17 +162,7 @@
                                     <input type="text" class="form-control" placeholder="Username">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-google">
-                                            <i class="ti-google"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Username">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-whatsapp">
-                                            <i class="fa fa-whatsapp"></i>
+                                            <i class="icon-google"></i>
                                         </span>
                                     </div>
                                 </div>

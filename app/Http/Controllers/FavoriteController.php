@@ -15,14 +15,11 @@ class FavoriteController extends Controller
         $this->repository = $repository;
     }
 
-    /**
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
     public function index()
     {
         $data = $this->repository->all();
 
-        return FavoriteResource::collection($data);
+        return  FavoriteResource::collection($data);
     }
 
     /**
