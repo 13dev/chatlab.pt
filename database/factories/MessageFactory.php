@@ -27,7 +27,7 @@ class MessageFactory extends Factory
     {
         return [
             'thread_id' => Thread::factory(),
-            'sender_id' => Participant::factory(),
+            'participant_id' => Participant::factory(),
             'body' => $this->faker->paragraph,
             'created_at' => Carbon::now(),
         ];

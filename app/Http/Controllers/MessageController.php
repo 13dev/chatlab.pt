@@ -36,7 +36,7 @@ class MessageController extends Controller
      */
     public function store(Request $request, MessageValidator $validator)
     {
-        $data = $request->only('thread_id', 'sender_id', 'body');
+        $data = $request->only('thread_id', 'participant_id', 'body');
 
         $validator->with($data)->passesOrFail();
 

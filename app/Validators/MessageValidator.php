@@ -9,7 +9,7 @@ class MessageValidator extends LaravelValidator
 {
     protected $rules = [
         'thread_id' => 'required',
-        'sender_id'  => 'required',
+        'participant_id'  => 'required',
         'body'=> 'required|max:5000',
     ];
 }
