@@ -14,12 +14,12 @@ class ThreadAuthBroadcastAction
             $result = $thread->participants
                 ->contains('user_id', $user->getKey());
 
-            logs()->info('Broadcast result: ' . $result);
+            logs()->info('Broadcast result: '.$result);
 
             return $result;
         }
 
-        logs()->error('Thread not found broadcast: ' . $thread);
+        logs()->error('Thread not found broadcast: '.$thread);
 
         return false;
     }

@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('thread.{threadId}',  ThreadAuthBroadcastAction::class);
+Broadcast::channel('thread.{threadId}', ThreadAuthBroadcastAction::class);
