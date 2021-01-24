@@ -76,34 +76,26 @@ export default {
     name: "Navigation",
     data() {
         return {
-            mode: null,
+            get mode() {
+                return localStorage.getItem('MODE') || '0';
+            },
+            set mode(value) {
+                console.log('setting');
+                localStorage.setItem('MODE', value);
+            },
             user: this.$page.props.user,
         }
     },
     created() {
-        if (localStorage.getItem('MODE') === null) {
-            localStorage.setItem('MODE', 2);
-            this.mode = 2;
-        } else {
-            this.mode = localStorage.getItem('MODE');
+        if(this.mode === '1') {
+            $('body').addClass('dark');
         }
-        this.backgroundColor(this.mode);
     },
     methods: {
         changeMode() {
-            this.mode = this.mode == 1 ? 2 : 1;
+            this.mode = this.mode === '0' ? '1' : '0';
 
-            localStorage.setItem('MODE', this.mode);
-
-            this.backgroundColor(this.mode);
-        },
-        backgroundColor(mode) {
-            let body = $('body');
-            if (mode == 1) {
-                body.addClass('dark');
-                return;
-            }
-            body.removeClass('dark');
+            $('body').toggleClass('dark', this.mode);
         },
 
         SIDEBAR_CHANGED(id, event) {
