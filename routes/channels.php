@@ -1,7 +1,6 @@
 <?php
 
 use App\Broadcasting\ThreadChannel;
-use App\Http\Actions\ThreadAuthBroadcastAction;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
