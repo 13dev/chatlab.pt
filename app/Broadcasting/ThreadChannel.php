@@ -18,7 +18,7 @@ class ThreadChannel
         $thread = Thread::find($threadId);
 
         if ($thread !== null) {
-            if($thread->participants->contains('user_id', $user->getKey())) {
+            if ($thread->participants->contains('user_id', $user->getKey())) {
                 return ['id' => $user->getKey(), 'name' => $user->name];
             }
         }
