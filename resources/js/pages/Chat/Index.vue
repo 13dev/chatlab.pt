@@ -1,3 +1,4 @@
+
 <template>
     <div class="layout">
         <sidebar-navigation></sidebar-navigation>
@@ -7,7 +8,7 @@
             </div>
             <div class="chat">
                 <chat-header></chat-header>
-                <!--            <chat-body ></chat-body>-->
+             <chat-body ></chat-body>
                 <chat-footer></chat-footer>
             </div>
             <div class="sidebar-group mobile-open">
@@ -19,12 +20,18 @@
 </template>
 
 <script>
+
+import feather from 'feather-icons'
+
 export default {
     props: ['user', 'threads'],
 
     name: "Index",
     created() {
         console.log(this.$activeChat);
+    },
+    mounted(){
+        feather.replace()
     }
 
 }

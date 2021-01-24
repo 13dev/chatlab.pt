@@ -7,6 +7,7 @@ require('bootstrap');
 window._ = require('lodash');
 window.axios = require('axios');
 window.Vue = require('vue');
+
 const feather = require('feather-icons');
 feather.replace();
 
