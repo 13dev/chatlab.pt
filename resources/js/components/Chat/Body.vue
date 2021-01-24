@@ -17,7 +17,7 @@
     <div class="chat-body empty-thread" v-else>
         <p class="lead"> Welcome to ChatLab </p>
 
-        <img src="https://i.imgur.com/AAAWagx.png" alt="" style ="    opacity: 0.3;
+        <img src="https://i.imgur.com/AAAWagx.png" alt="" style="    opacity: 0.3;
     filter: grayscale(50%);">
     </div>
 
@@ -43,13 +43,19 @@ export default {
     },
     methods: {},
     on: {
-        THREAD_CHANGED(thread) {
-            this.thread = thread;
+        SENDED_MESSAGE(message) {
+            this.messages.push(message);
+        },
 
+        THREAD_CHANGED(thread) {
+
+            if (this.thread != null) {
+                Echo.leave(`thread.${this.thread.id}`);
+            }
+
+            this.thread = thread;
             console.log('Thread changed on body chat.');
             console.log('.sendmessage1');
-
-            Echo.disconnect();
 
             Echo.join(`thread.${thread.id}`)
                 .here(users => {

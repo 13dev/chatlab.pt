@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Http\Resources\MessageResource;
 use App\Models\Message;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -34,7 +35,7 @@ class SendMessage implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'message' => $this->message,
+            'message' => new MessageResource($this->message),
         ];
     }
 
