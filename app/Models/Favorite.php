@@ -22,11 +22,11 @@ class Favorite extends UuidModel
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function favorited()
     {
-        return $this->belongsTo(User::class,'favorited_id');
+        return $this->belongsTo(User::class, 'favorited_id');
     }
 }

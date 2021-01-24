@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\FavoriteResource;
 use App\Http\Resources\ThreadResource;
-
 use App\Models\Favorite;
 use App\Repositories\FavoriteRepository;
 use App\Services\Threads\ListThreadService;
@@ -15,7 +14,8 @@ class ChatController extends Controller
 {
     private FavoriteRepository $repository;
 
-    public function __construct(FavoriteRepository $repository){
+    public function __construct(FavoriteRepository $repository)
+    {
         $this->repository = $repository;
     }
 
@@ -24,11 +24,10 @@ class ChatController extends Controller
         debugbar()->log('Calling Chat Controller');
         $threads = ThreadResource::collection($listThreadService());
 
-
-        $favorites = FavoriteResource::collection($this->repository->with(['user','favorited'])->get());
+        $favorites = FavoriteResource::collection($this->repository->with(['user', 'favorited'])->get());
 
         debugbar()->log($threads);
 
-        return inertia('Chat/Index', compact('threads','favorites'));
+        return inertia('Chat/Index', compact('threads', 'favorites'));
     }
 }
