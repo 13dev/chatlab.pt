@@ -8,7 +8,7 @@
         <meta name="url" content="{{ url('').'/'.config('chatify.path') }}" data-user="{{ Auth::user()->id }}">
     @endauth
 
-    <title>ChatLab</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
 
@@ -23,10 +23,7 @@
 </head>
 
 <body class="dark">
-@include('chatlab.modals.modals')
-<div class="layout">
-    @include('chatlab.includes.navigation-chat')
+    @include('chatlab.modals.modals')
     @inertia
-</div>
 </body>
 </html>

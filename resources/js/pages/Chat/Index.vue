@@ -1,26 +1,37 @@
+
 <template>
-    <div class="content">
-        <div class="sidebar-group">
-            <sidebar-chat :threads="threads.data"></sidebar-chat>
-        </div>
-        <div class="chat">
-            <chat-header></chat-header>
-           <chat-body ></chat-body>
-            <chat-footer></chat-footer>
-        </div>
-        <div class="sidebar-group mobile-open">
-            <!-- @include('chatlab.includes.sidebar-group2-contact-information') -->
+    <div class="layout">
+        <sidebar-navigation></sidebar-navigation>
+        <div class="content">
+            <div class="sidebar-group">
+                <sidebar-chat :threads="threads.data"></sidebar-chat>
+            </div>
+            <div class="chat">
+                <chat-header></chat-header>
+             <chat-body ></chat-body>
+                <chat-footer></chat-footer>
+            </div>
+            <div class="sidebar-group mobile-open">
+                <!-- @include('chatlab.includes.sidebar-group2-contact-information') -->
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
+
+import feather from 'feather-icons'
+
 export default {
-    props: ['user','threads'],
+    props: ['user', 'threads'],
 
     name: "Index",
     created() {
         console.log(this.$activeChat);
+    },
+    mounted(){
+        feather.replace()
     }
 
 }
