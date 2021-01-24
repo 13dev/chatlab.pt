@@ -30,8 +30,7 @@ class SendMessage implements ShouldBroadcast
 
     public function broadcastOn()
     {
-
-        return new PresenceChannel('thread.' . $this->thread);
+        return new PresenceChannel('thread.'.$this->thread);
     }
 
     public function broadcastWith()
