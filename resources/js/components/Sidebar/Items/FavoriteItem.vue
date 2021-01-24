@@ -1,5 +1,5 @@
 <template>
-    <li class="list-group-item" v-if="thread.user_id.id == user.id">
+    <li class="list-group-item favorite-list" v-if="thread.user_id.id == user.id">
         <div class="users-list-body">
             <div>
                 <h5>{{ thread.favorited_id.name}} </h5>

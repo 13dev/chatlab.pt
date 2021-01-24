@@ -46,7 +46,7 @@ export default {
     data(){
         return{
             widget: 1,
-            thread: null,
+            thread: '',
         }
     },
     on: {

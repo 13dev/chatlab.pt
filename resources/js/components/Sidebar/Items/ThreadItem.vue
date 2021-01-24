@@ -1,5 +1,5 @@
 <template>
-    <li class="list-group-item" :class="{ 'open-chat': this.activeChat == this.thread.id }" @click.prevent="handleChangeChat">
+    <li class="list-group-item thread-list" :class="{ 'open-chat': this.activeChat == this.thread.id }" @click.prevent="handleChangeChat">
         <div>
             <figure class="avatar">
                 <img :src="thread.avatar" class="rounded-circle" alt="image">
