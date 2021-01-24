@@ -24,6 +24,10 @@ Vue.component('sidebar-items-favorite', require('./components/Sidebar/Items/Favo
 Vue.component('sidebar-items-friend', require('./components/Sidebar/Items/FriendItem').default);
 Vue.component('sidebar-navigation', require('./components/Sidebar/Navigation').default);
 Vue.component('chat-message', require('./components/Chat/Message').default);
+Vue.component('widget-index', require('./components/Widget/Index').default);
+Vue.component('widget-item-about', require('./components/Widget/About').default);
+Vue.component('widget-item-media', require('./components/Widget/Media').default);
+
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     // if (JQuery.browser.mobile) {

@@ -15,7 +15,7 @@
                <chat-footer></chat-footer>
            </div>
            <div class="sidebar-group mobile-open">
-               <!-- @include('chatlab.includes.sidebar-group2-contact-information') -->
+               <widget-index v-show="widget==true"></widget-index>
             </div>
         </div>
     </div>
@@ -27,12 +27,13 @@
 import feather from 'feather-icons'
 
 export default {
-    props: ['user', 'threads'],
+    props: ['threads'],
 
     name: "Index",
    data(){
         return {
-            sidebar : 1
+            sidebar : 1,
+            widget : false
         }
    },
     mounted(){
@@ -42,7 +43,11 @@ export default {
         SIDEBAR_CHANGED(id) {
             this.sidebar = id;
             console.log(this.sidebar);
-        }
+        },
+        WIDGET_CHANGED(widget) {
+            this.widget = widget;
+
+         }
     },
 }
 </script>

@@ -45,6 +45,7 @@ export default {
         handleChangeChat() {
             this.$activeChat = this.thread.id;
             this.$bus.emit('THREAD_CHANGED', this.thread);
+            this.$bus.emit('WIDGET_CHANGED', false);
         }
     }
 }

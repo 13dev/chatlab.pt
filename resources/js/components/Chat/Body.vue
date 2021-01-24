@@ -19,7 +19,7 @@
     <div class="chat-body empty-thread" v-else>
         <p class="lead"> Welcome to ChatLab </p>
 
-        <img src="https://i.imgur.com/AAAWagx.png" alt="" style="    opacity: 0.3;
+        <img src="https://i.imgur.com/AAAWagx.png" alt="" style ="    opacity: 0.3;
     filter: grayscale(50%);">
     </div>
 

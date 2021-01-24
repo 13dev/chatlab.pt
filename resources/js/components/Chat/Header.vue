@@ -58,7 +58,8 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-options" x-placement="bottom-end">
-                        <a href="#" data-navigation-target="contact-information" class="dropdown-item">Profile</a>
+                        <a href="#" data-navigation-target="contact-information" class="dropdown-item"
+                           @click="openWidget()">Profile</a>
                         <a href="#" class="dropdown-item">Add to archive</a>
                         <a href="#" class="dropdown-item">Delete</a>
                         <div class="dropdown-divider"></div>
@@ -73,18 +74,20 @@
 <script>
 export default {
     name: "Header",
-    data(){
+    data() {
         return {
-            thread: null,
+            thread: null
         }
     },
     on: {
         THREAD_CHANGED(thread) {
             this.thread = thread;
-            console.log(this.thread);
         }
     },
     methods: {
+        openWidget() {
+            this.$bus.emit('WIDGET_CHANGED', true);
+        }
 
     },
 }

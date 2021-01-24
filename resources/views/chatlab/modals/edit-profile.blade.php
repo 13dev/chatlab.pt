@@ -7,7 +7,7 @@
                     <i data-feather="edit-2" class="mr-2"></i> Edit Profile
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="ti-close"></i>
+                    <i class="icon-close"></i>
                 </button>
             </div>
             <div class="modal-body">

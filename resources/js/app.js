@@ -4,7 +4,6 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue';
 import {App, plugin} from '@inertiajs/inertia-vue';
 import EventBus from 'vue-super-eventbus';
-import feather from 'feather-icons'
 
 Vue.use(BootstrapVue);
 Vue.use(plugin);

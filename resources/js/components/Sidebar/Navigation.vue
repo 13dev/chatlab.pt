@@ -13,7 +13,7 @@
                 </li>
 
                 <li>
-                    <a data-navigation-target="chats" @click.prevent="handleChangeSidebar(1,$event)" href="#"
+                    <a data-navigation-target="chats" @click.prevent="SIDEBAR_CHANGED(1,$event)" href="#"
                        data-toggle="tooltip" title="Chats"
                        data-placement="right">
                         <span class="badge badge-warning"></span>
@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <a data-navigation-target="friends" href="#" data-toggle="tooltip"
-                       @click.prevent="handleChangeSidebar(2,$event)"
+                       @click.prevent="SIDEBAR_CHANGED(2,$event)"
                        title="Friends" data-placement="right">
                         <span class="badge badge-danger"></span>
                         <i data-feather="user"></i>
@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <a data-navigation-target="favorites" data-toggle="tooltip" title="Favorites" data-placement="right"
-                       @click.prevent="handleChangeSidebar(3,$event)"
+                       @click.prevent="SIDEBAR_CHANGED(3,$event)"
                        href="#">
                         <i data-feather="star"></i>
                     </a>
@@ -91,18 +91,12 @@ export default {
     },
     methods: {
         changeMode() {
-
             this.mode = this.mode == 1 ? 2 : 1;
 
             localStorage.setItem('MODE', this.mode);
 
             this.backgroundColor(this.mode);
         },
-
-        handleChangeSidebar(id, event) {
-            this.$bus.emit('SIDEBAR_CHANGED', id);
-        },
-
         backgroundColor(mode) {
             let body = $('body');
             if (mode == 1) {
@@ -110,6 +104,10 @@ export default {
                 return;
             }
             body.removeClass('dark');
+        },
+
+        SIDEBAR_CHANGED(id, event) {
+            this.$bus.emit('SIDEBAR_CHANGED', id);
         }
     }
 }
