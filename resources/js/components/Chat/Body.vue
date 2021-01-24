@@ -47,7 +47,9 @@ export default {
         THREAD_CHANGED(thread) {
             this.thread = thread;
 
-            Echo.join('thread-' + thread.id)
+            console.log('Thread changed on body chat.');
+
+            Echo.join('thread.' + thread.id)
                 .here(user => {
                     console.log(1);
                     this.users = user;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\SendMessage;
 use App\Http\Resources\MessageResource;
+use App\Models\Participant;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
 use Illuminate\Http\Request;
@@ -36,9 +37,15 @@ class MessageController extends Controller
      */
     public function store(Request $request, MessageValidator $validator)
     {
-        $data = $request->only('thread_id', 'participant_id', 'body');
+        $data = $request->only('thread_id', 'user_id', 'body');
 
         $validator->with($data)->passesOrFail();
+
+        // TODO: Change to find only, if doesnt exists return error.
+        $data['participant_id'] = Participant::firstOrCreate(['user_id' => $data['user_id']], [
+            'user_id' => $data['user_id'],
+            'thread_id' => $data['thread_id'],
+        ])->getKey();
 
         $response = $this->repository->create($data);
 

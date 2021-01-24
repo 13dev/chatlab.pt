@@ -17,7 +17,7 @@ class Message extends Model
      */
     protected $fillable = [
         'thread_id',
-        'sender_id',
+        'participant_id',
         'body',
     ];
 
@@ -28,7 +28,7 @@ class Message extends Model
      */
     public function sender()
     {
-        return $this->belongsTo(Participant::class, 'sender_id');
+        return $this->belongsTo(Participant::class, 'participant_id');
     }
 
     /**

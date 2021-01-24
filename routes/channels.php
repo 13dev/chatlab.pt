@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Actions\ThreadAuthBroadcastAction;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -13,6 +14,4 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('thread-{id}', function ($user, $id) {
-    return \App\Models\Thread::participants()->get();
-});
+Broadcast::channel('thread.{threadId}', ThreadAuthBroadcastAction::class);

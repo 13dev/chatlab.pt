@@ -69,7 +69,7 @@ export default {
             console.log(this.$page);
             let data = {
                 thread_id: this.thread.id,
-                participant_id: this.$page.props.user.id,
+                user_id: this.$page.props.user.id,
                 body: this.message,
             };
             this.$inertia.post('/messages', data, {
