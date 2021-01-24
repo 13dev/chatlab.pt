@@ -1,6 +1,6 @@
 <template>
     <!-- Chats sidebar -->
-    <div id="chats" class="sidebar active">
+    <div id="chats" class="sidebar ">
         <header>
             <span>Chats</span>
             <ul class="list-inline">

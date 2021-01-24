@@ -2,12 +2,12 @@
     <li class="list-group-item" data-navigation-target="chats">
         <div>
             <figure class="avatar">
-                <img :src="user.image" class="rounded-circle" alt="image">
+                <img :src="''" class="rounded-circle" alt="image">
             </figure>
         </div>
         <div class="users-list-body">
             <div>
-                <h5>{{ user.name }}</h5>
+                <h5></h5>
                 <p>Dental Hygienist</p>
             </div>
             <div class="users-list-action">
@@ -33,12 +33,7 @@
 <script>
 export default{
     name : "FriendItem",
-    props: {
-        user: {
-            type: Object,
-            required: true,
-        }
-    }
+
 }
 </script>
 

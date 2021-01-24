@@ -2,7 +2,7 @@
     <li class="list-group-item">
         <div class="users-list-body">
             <div>
-                <h5>{{ user.name }}</h5>
+                <h5>ya </h5>
                 <p>enrola essa ;)</p>
             </div>
             <div class="users-list-action">
@@ -25,12 +25,6 @@
 <script>
 export default{
     name : "FavoriteItem",
-    props: {
-        name : {
-            type: Object,
-            required: false,
-        }
-    }
 }
 </script>
 
