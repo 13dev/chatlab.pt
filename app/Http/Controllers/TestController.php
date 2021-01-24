@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ParticipantResource;
 use App\Http\Resources\ThreadResource;
-use App\Models\Thread;
 use App\Models\Participant;
+use App\Models\Thread;
 use Inertia\Inertia;
 
 class TestController extends Controller

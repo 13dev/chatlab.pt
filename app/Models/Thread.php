@@ -38,7 +38,6 @@ class Thread extends UuidModel
         'last_read',
     ];
 
-
     /**
      * Get thread messages.
      *

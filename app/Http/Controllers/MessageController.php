@@ -42,7 +42,6 @@ class MessageController extends Controller
 
         $response = $this->repository->create($data);
 
-
         broadcast(new SendMessage($data['thread_id'], $data['body']));
 
         return redirect()
