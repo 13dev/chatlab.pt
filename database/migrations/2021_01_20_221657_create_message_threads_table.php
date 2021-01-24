@@ -17,6 +17,7 @@ class CreateMessageThreadsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title')->nullable();
             $table->string('avatar')->default(config('chatlab.thread_avatar'));
+            $table->string('description')->nullable();
         });
     }
 

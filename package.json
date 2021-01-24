@@ -34,7 +34,9 @@
         "font-awesome": "^4.7.0",
         "inter-ui": "^3.15.0",
         "jquery": "^3.5.1",
+        "laravel-echo": "^1.10.0",
         "popper.js": "^1.16.1",
+        "pusher-js": "^7.0.2",
         "vue": "^2.6.12",
         "vue-feather-icons": "^5.1.0",
         "vue-super-eventbus": "^2.4.1"

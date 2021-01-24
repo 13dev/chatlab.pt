@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendMessage;
 use App\Http\Resources\MessageResource;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
@@ -40,6 +41,9 @@ class MessageController extends Controller
         $validator->with($data)->passesOrFail();
 
         $response = $this->repository->create($data);
+
+
+        broadcast(new SendMessage($data['thread_id'], $data['body']));
 
         return redirect()
             ->back()

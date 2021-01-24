@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\MessageThread;
+use App\Models\Thread;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MessageThreadFactory extends Factory
@@ -12,7 +12,7 @@ class MessageThreadFactory extends Factory
      *
      * @var string
      */
-    protected $model = MessageThread::class;
+    protected $model = Thread::class;
 
     /**
      * Define the model's default state.
@@ -24,6 +24,7 @@ class MessageThreadFactory extends Factory
         return [
             'id' => $this->faker->uuid,
             'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
         ];
     }
 }

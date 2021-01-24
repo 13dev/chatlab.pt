@@ -23,7 +23,7 @@ Vue.component('sidebar-items-thread', require('./components/Sidebar/Items/Thread
 Vue.component('sidebar-items-favorite', require('./components/Sidebar/Items/FavoriteItem').default);
 Vue.component('sidebar-items-friend', require('./components/Sidebar/Items/FriendItem').default);
 Vue.component('sidebar-navigation', require('./components/Sidebar/Navigation').default);
-
+Vue.component('chat-message', require('./components/Chat/Message').default);
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     // if (JQuery.browser.mobile) {
@@ -41,13 +41,13 @@ $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-it
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: 'eu',
+    forceTLS: true
+});

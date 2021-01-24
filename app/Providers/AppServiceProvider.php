@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Resources\MessageThreadResource;
+use App\Http\Resources\ThreadResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        MessageThreadResource::withoutWrapping();
+        ThreadResource::withoutWrapping();
 
         Model::created(function ($model) {
             debugbar()->info('Created the', $model);
