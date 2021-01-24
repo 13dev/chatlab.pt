@@ -7,7 +7,6 @@ use App\Models\User;
 
 class ThreadChannel
 {
-
     /**
      * Authenticate the user's access to the channel.
      *
@@ -24,7 +23,7 @@ class ThreadChannel
             }
         }
 
-        logs()->error('Thread not found broadcast: ' . $thread);
+        logs()->error('Thread not found broadcast: '.$thread);
 
         return false;
     }
