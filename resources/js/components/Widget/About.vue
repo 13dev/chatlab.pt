@@ -1,6 +1,5 @@
 <template>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="home"  role="tabpanel" aria-labelledby="home-tab">
             <p class="text-muted">Lorem ipsum is a pseudo-Latin text used in web design, typography,
                 layout, and printing in place of English to emphasise design elements over content.
                 It's also called placeholder (or filler) text. It's a convenient tool for
@@ -79,8 +78,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
 </template>
 
 <script>

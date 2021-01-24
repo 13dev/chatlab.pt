@@ -26,21 +26,22 @@
 
                     <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab"
                                aria-controls="home" aria-selected="true"
-                               @click.prevent="changeWidget(true)"
                             >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab"
                                aria-controls="profile" aria-selected="false"
-                               @click.prevent="changeWidget(false)"
                             >Media</a>
                         </li>
                     </ul>
                 </div>
-                <widget-item-about v-if="widget"></widget-item-about>
-                <widget-item-media v-else></widget-item-media>
+                <div class="tab-content">
+                    <widget-item-about></widget-item-about>
+                    <widget-item-media></widget-item-media>
+                </div>
+
             </div>
         </div>
     </div>
@@ -68,14 +69,8 @@ export default {
         closeWidget() {
             this.$bus.emit('WIDGET_CHANGED', false);
         },
-        changeWidget(mode) {
-            this.widget = !mode;
-        }
     }
 
 }
 </script>
 
-<style scoped>
-
-</style>
