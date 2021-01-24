@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\MessageThread;
+use App\Models\Thread;
 use Prettus\Repository\Eloquent\BaseRepository;
 
-class MessageThreadRepository extends BaseRepository
+class ThreadRepository extends BaseRepository
 {
     public function model()
     {
-        return MessageThread::class;
+        return Thread::class;
     }
 }

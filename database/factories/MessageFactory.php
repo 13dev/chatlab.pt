@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Message;
-use App\Models\MessageThread;
+use App\Models\Participant;
+use App\Models\Thread;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -25,8 +26,8 @@ class MessageFactory extends Factory
     public function definition()
     {
         return [
-            'thread_id' => MessageThread::factory(),
-            'sender_id' => User::factory(),
+            'thread_id' => Thread::factory(),
+            'participant_id' => Participant::factory(),
             'body' => $this->faker->paragraph,
             'created_at' => Carbon::now(),
         ];

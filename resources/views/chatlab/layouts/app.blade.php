@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="dark">
+<body>
     @include('chatlab.modals.modals')
     @inertia
 </body>

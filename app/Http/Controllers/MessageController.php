@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendMessage;
 use App\Http\Resources\MessageResource;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
@@ -35,11 +36,13 @@ class MessageController extends Controller
      */
     public function store(Request $request, MessageValidator $validator)
     {
-        $data = $request->only('thread_id', 'sender_id', 'body');
+        $data = $request->only('thread_id', 'participant_id', 'body');
 
         $validator->with($data)->passesOrFail();
 
         $response = $this->repository->create($data);
+
+        broadcast(new SendMessage($data['thread_id'], $data['body']));
 
         return redirect()
             ->back()

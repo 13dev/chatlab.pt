@@ -6,7 +6,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MessageThread extends UuidModel
+class Thread extends UuidModel
 {
     use HasFactory, Uuid;
 
@@ -19,6 +19,7 @@ class MessageThread extends UuidModel
         'last_read',
         'title',
         'model',
+        'description',
     ];
 
     /**
@@ -38,15 +39,6 @@ class MessageThread extends UuidModel
     ];
 
     /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'messages',
-    ];
-
-    /**
      * Get thread messages.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -63,7 +55,7 @@ class MessageThread extends UuidModel
      */
     public function participants()
     {
-        return $this->hasMany(MessageThreadParticipant::class, 'thread_id');
+        return $this->hasMany(Participant::class, 'thread_id');
     }
 
     public function getLastReadAttribute()

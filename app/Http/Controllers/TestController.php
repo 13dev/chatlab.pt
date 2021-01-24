@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\MessageThreadParticipantResource;
-use App\Http\Resources\MessageThreadResource;
-use App\Models\MessageThread;
-use App\Models\MessageThreadParticipant;
+use App\Http\Resources\ParticipantResource;
+use App\Http\Resources\ThreadResource;
+use App\Models\Participant;
+use App\Models\Thread;
 use Inertia\Inertia;
 
 class TestController extends Controller
 {
     public function index()
     {
-        $data = MessageThreadParticipant::find(21)
+        $data = Participant::find(21)
             ->with('thread', 'user')
             ->get();
 
-        $user = new MessageThreadParticipantResource($data);
+        $user = new ParticipantResource($data);
 
         return view('test', ['user' => $user]);
     }
 
     public function test()
     {
-        $threads = MessageThreadResource::collection(
-            MessageThread::all()
+        $threads = ThreadResource::collection(
+            Thread::all()
         );
 
         $user = '2ere2';

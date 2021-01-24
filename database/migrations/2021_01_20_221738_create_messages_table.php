@@ -17,11 +17,11 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('thread_id');
-            $table->uuid('sender_id');
+            $table->integer('participant_id')->unsigned();
             $table->text('body');
             $table->timestamp('created_at')->default(Carbon::now());
 
-            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('participant_id')->references('id')->on('message_thread_participants')->onDelete('cascade');
             $table->foreign('thread_id')->references('id')->on('message_threads')->onDelete('cascade');
         });
     }

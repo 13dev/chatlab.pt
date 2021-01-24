@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['web', 'auth'])->group(function () {
+Route::middleware(['web'])->group(function () {
     Route::get('/', ChatController::class);
 
     // Messages Routes

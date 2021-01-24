@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MessageThreadResource extends JsonResource
+class ThreadResource extends JsonResource
 {
     public function toArray($request)
     {
@@ -15,9 +15,9 @@ class MessageThreadResource extends JsonResource
             'messages' => MessageResource::collection(
                 $this->whenLoaded('messages')
             ),
-            'participants' => MessageThreadParticipantResource::collection(
+            'participants' => ParticipantResource::collection(
                 $this->whenLoaded('participants')),
-            'avatar' => url($this->avatar),
+            'avatar' => asset($this->avatar),
         ];
     }
 }

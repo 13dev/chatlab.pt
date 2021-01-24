@@ -2,29 +2,29 @@
 
 namespace App\Services\Threads;
 
-use App\Models\MessageThread;
-use App\Repositories\MessageThreadParticipantRepository;
-use App\Repositories\MessageThreadRepository;
+use App\Models\Thread;
+use App\Repositories\ParticipantRepository;
+use App\Repositories\ThreadRepository;
 use Illuminate\Support\Facades\DB;
 
 class CreateThreadService
 {
     /**
-     * @var MessageThreadRepository
+     * @var ThreadRepository
      */
-    private MessageThreadRepository $messageThreadRepository;
+    private ThreadRepository $messageThreadRepository;
     /**
-     * @var MessageThreadParticipantRepository
+     * @var ParticipantRepository
      */
-    private MessageThreadParticipantRepository $messageThreadParticipantRepository;
+    private ParticipantRepository $messageThreadParticipantRepository;
 
-    public function __construct(MessageThreadRepository $messageThreadRepository, MessageThreadParticipantRepository $messageThreadParticipantRepository)
+    public function __construct(ThreadRepository $messageThreadRepository, ParticipantRepository $messageThreadParticipantRepository)
     {
         $this->messageThreadRepository = $messageThreadRepository;
         $this->messageThreadParticipantRepository = $messageThreadParticipantRepository;
     }
 
-    public function __invoke(array $participants, ?string $title = null): MessageThread
+    public function __invoke(array $participants, ?string $title = null): Thread
     {
         debugbar()->log('Calling CreateThreadService...');
 
@@ -32,7 +32,7 @@ class CreateThreadService
 
         DB::transaction(function () use ($participants, $title, &$thread) {
             debugbar()->log('Creating the thread...');
-            /** @var MessageThread $thread */
+            /** @var Thread $thread */
             $thread = $this->messageThreadRepository->create([
                 'title' => $title,
             ]);

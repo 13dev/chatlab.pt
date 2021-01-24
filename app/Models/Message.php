@@ -28,7 +28,7 @@ class Message extends Model
      */
     public function sender()
     {
-        return $this->belongsTo(User::class, 'sender_id');
+        return $this->belongsTo(Participant::class, 'sender_id');
     }
 
     /**
@@ -36,7 +36,7 @@ class Message extends Model
      */
     public function thread()
     {
-        return $this->belongsTo(MessageThread::class, 'thread_id');
+        return $this->belongsTo(Thread::class, 'thread_id');
     }
 
     public function scopeFromSender($query, $sender)

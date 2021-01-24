@@ -2,16 +2,16 @@
 
 namespace App\Services\Threads;
 
-use App\Repositories\MessageThreadRepository;
+use App\Repositories\ThreadRepository;
 
 class ListThreadService
 {
     /**
-     * @var MessageThreadRepository
+     * @var ThreadRepository
      */
-    private MessageThreadRepository $messageThreadRepository;
+    private ThreadRepository $messageThreadRepository;
 
-    public function __construct(MessageThreadRepository $messageThreadRepository)
+    public function __construct(ThreadRepository $messageThreadRepository)
     {
         $this->messageThreadRepository = $messageThreadRepository;
     }
