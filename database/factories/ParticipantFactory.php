@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Thread;
 use App\Models\Participant;
+use App\Models\Thread;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
