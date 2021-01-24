@@ -3,19 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\Thread;
-use App\Models\Participant;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MessageThreadParticipantFactory extends Factory
+class ThreadFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Participant::class;
+    protected $model = Thread::class;
 
     /**
      * Define the model's default state.
@@ -25,9 +22,9 @@ class MessageThreadParticipantFactory extends Factory
     public function definition()
     {
         return [
-            'thread_id' => Thread::factory(),
-            'user_id' => User::factory(),
-            'last_read' => Carbon::now(),
+            'id' => $this->faker->uuid,
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
         ];
     }
 }
