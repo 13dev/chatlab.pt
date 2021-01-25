@@ -41,13 +41,15 @@ export default {
             required: true,
         }
     },
-    data(){
+    data() {
         return {
             activeChat: null,
             user: this.$page.props.user
         }
-    },on : {
-        ACTIVE_CHAT(activeChat){
+    },
+    on: {
+        ACTIVE_CHAT(activeChat) {
+            //to fixx
             this.activeChat = activeChat;
         }
     },
