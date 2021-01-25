@@ -66,7 +66,7 @@
                        <!-- <a href="#" class="dropdown-item">Add to archive</a>
                         <a href="#" class="dropdown-item">Delete</a> -->
                         <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item text-danger">Delete</a>
+                            <a href="#" class="dropdown-item text-danger" @click.prevent="leaveConversation()">Delete</a>
                     </div>
                 </li>
             </ul>
@@ -107,6 +107,16 @@ export default {
         openWidget() {
             this.$bus.emit('WIDGET_CHANGED', true);
         },
+        leaveConversation(){
+            this.$inertia.delete('/participants/'+ this.thread.id,{
+                preserveState: true,
+                onSuccess: () => {
+                },
+                onError(errors) {
+                    console.log(222);
+                },
+            });
+        }
 
     },
 }

@@ -20,10 +20,10 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="#" class="dropdown-item">Open</a>
                             <a href="#" data-navigation-target="contact-information"
-                               class="dropdown-item">Profile</a>
+                               class="dropdown-item" @click="openWidget()">Profile</a>
                             <a href="#" class="dropdown-item">Add to archive</a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item text-danger">Delete</a>
+                            <a href="#" class="dropdown-item text-danger" @click.prevent="leaveConversation()">Leave</a>
                         </div>
                     </div>
                 </div>
@@ -60,17 +60,28 @@ export default {
                 this.$bus.emit('WIDGET_CHANGED', false);
                 this.$bus.emit('ACTIVE_CHAT', this.thread.id);
             }
-            this.$inertia.visit('/thread/' + this.thread.id + '/participant', {
+            this.$inertia.visit('/thread/' + this.thread.id + '/participants', {
                 preserveState: true,
                 onSuccess: () => {
                     this.$bus.emit('PARTICIPANTS', this.$page.props.response);
                     console.log(this.$page.props.response);
                 },
-                onError(errors) {
+                onError: (errors) => {
                     console.log(222);
                 },
             });
 
+        },
+        leaveConversation(){
+            this.$inertia.delete('/participants/'+ this.thread.id,{
+                preserveState: true,
+                onFinished: () => {
+
+                },
+            });
+        },
+        openWidget() {
+            this.$bus.emit('WIDGET_CHANGED', true);
         },
     }
 }
