@@ -32,7 +32,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('favorite', FavoriteController::class);
 
     Route::resource('thread', MessageThreadController::class);
-
 });
 
 Route::get('/dashboard', function () {

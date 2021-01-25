@@ -16,7 +16,6 @@ class MessageThreadController extends Controller
         );
     }
 
-
     public function store(Request $request, CreateThreadService $createThreadService)
     {
         $thread = $createThreadService(

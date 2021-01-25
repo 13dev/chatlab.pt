@@ -24,7 +24,7 @@ class CreateThreadService
         $this->messageThreadParticipantRepository = $messageThreadParticipantRepository;
     }
 
-    public function __invoke(array $participants,  string $description, string $title): Thread
+    public function __invoke(array $participants, string $description, string $title): Thread
     {
         debugbar()->log('Calling CreateThreadService...');
 
@@ -35,7 +35,7 @@ class CreateThreadService
             /** @var Thread $thread */
             $thread = $this->messageThreadRepository->create([
                 'title' => $title,
-                'description' => $description
+                'description' => $description,
             ]);
             foreach ($participants as $participant) {
                 debugbar()->log('Creating Participant with uuid', $participant);
@@ -44,7 +44,6 @@ class CreateThreadService
                     'user_id' => $participant,
                 ]);
             }
-
         });
 
         return $thread;
