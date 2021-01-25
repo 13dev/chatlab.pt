@@ -38,22 +38,32 @@ export default {
         window.Echo.connector.pusher.connection.bind('connected', () => {
             console.log('connected');
         });
-
+        this.loadMessages();
+    },
+    methods: {
+        loadMessages() {
+            this.$inertia.visit(`threads/${this.thread.id}/messages`, {
+                preserveState: true,
+                onSuccess: (data) => {
+                    this.messages = this.$page.props.response;
+                },
+                onError: (error) => console.log(error),
+            })
+        }
 
     },
-    methods: {},
     on: {
         SENDED_MESSAGE(message) {
             this.messages.push(message);
         },
 
         THREAD_CHANGED(thread) {
-
             if (this.thread != null) {
                 Echo.leave(`thread.${this.thread.id}`);
             }
 
             this.thread = thread;
+            this.loadMessages();
             console.log('Thread changed on body chat.');
 
             Echo.join(`thread.${thread.id}`)
