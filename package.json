@@ -40,6 +40,7 @@
         "pusher-js": "^7.0.2",
         "vue": "^2.6.12",
         "vue-feather-icons": "^5.1.0",
-        "vue-super-eventbus": "^2.4.1"
+        "vue-super-eventbus": "^2.4.1",
+        "vue-toast-notification": "^0.6.0"
     }
 }

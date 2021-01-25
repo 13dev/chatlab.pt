@@ -28,7 +28,8 @@
                     </a>
                 </li>
                 <li class="list-inline-item" data-toggle="tooltip" title="" data-original-title="Voice call">
-                    <a href="#" class="btn btn-outline-light text-success" data-toggle="modal" data-target="#call">
+                    <a href="#" class="btn btn-outline-light text-success buttons-rounded" data-toggle="modal"
+                       data-target="#call">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-phone">
@@ -38,7 +39,8 @@
                     </a>
                 </li>
                 <li class="list-inline-item" data-toggle="tooltip" title="" data-original-title="Video call">
-                    <a href="#" class="btn btn-outline-light text-warning" data-toggle="modal" data-target="#videoCall">
+                    <a href="#" class="btn btn-outline-light text-warning buttons-rounded" data-toggle="modal"
+                       data-target="#videoCall">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-video">
@@ -48,7 +50,7 @@
                     </a>
                 </li>
                 <li class="list-inline-item">
-                    <a href="#" class="btn btn-outline-light" data-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="btn btn-outline-light buttons-rounded" data-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-more-horizontal">
@@ -57,7 +59,8 @@
                             <circle cx="5" cy="12" r="1"></circle>
                         </svg>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right user-options" x-placement="bottom-end">
+                    <div class="dropdown-menu dropdown-menu-right user-options"
+                         x-placement="bottom-end">
                         <a href="#" data-navigation-target="contact-information" class="dropdown-item"
                            @click="openWidget()">Profile</a>
                         <a href="#" class="dropdown-item">Add to archive</a>
@@ -94,13 +97,9 @@ export default {
             }
 
             if (!this.typing) {
-                this.usersTyping = this.usersTyping.filter(function(user) {
+                this.usersTyping = this.usersTyping.filter(function (user) {
                     return user.id === data.user.id;
                 });
-
-                // this.usersTyping = this.usersTyping.filter(function(item) {
-                //     return item.id !== data.user.id;
-                // });
             }
         }
     },
@@ -129,5 +128,12 @@ export default {
     50% {
         opacity: 0;
     }
+}
+
+.buttons-rounded {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    padding: 13px 13px;
 }
 </style>

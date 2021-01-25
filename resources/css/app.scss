@@ -4,3 +4,12 @@
 @import "layout";
 @import "queries";
 @import "themify-icons/themify-icons";
+
+//import 'vue-toast-notification/dist/theme-default.css';
+@import '~vue-toast-notification/dist/theme-sugar.css';
+
+
+.v-toast--top {
+    margin-left: 23vw;
+    margin-top: 70px;
+}
