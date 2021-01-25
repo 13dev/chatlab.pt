@@ -14,7 +14,7 @@
                     </svg>
                 </button>
             </div>
-            <input type="text" class="form-control" placeholder="Write a message." v-model="message">
+            <input type="text" class="form-control" placeholder="Write a message..." v-model="message" @input="typing()">
             <div class="form-buttons">
                 <button class="btn btn-light" data-toggle="tooltip" title="" type="button"
                         data-original-title="Add files">
@@ -65,6 +65,16 @@ export default {
         }
     },
     methods: {
+
+        typing: _.debounce(function () {
+            console.log('writing...')
+            Echo.join(`thread.` + this.thread.id)
+                .whisper('typing', {
+                    user: this.$page.props.user,
+                    typing: true
+                })
+        }, 300),
+
         sendMessage() {
             console.log(this.$page);
             let data = {

@@ -10,7 +10,7 @@
             <div v-else>
                 <h5>{{ thread.title }}</h5>
                 <small class="text-success">
-                    <i>writing...</i>
+                    <i v-if="typing" class="blink">{{ usersTyping.map(user => user.name).join(", ") }} is writing...</i>
                 </small>
             </div>
         </div>
@@ -76,18 +76,38 @@ export default {
     name: "Header",
     data() {
         return {
-            thread: null
+            thread: null,
+            typing: false,
+            usersTyping: [],
         }
     },
     on: {
         THREAD_CHANGED(thread) {
             this.thread = thread;
+        },
+
+        USER_TYPING(data) {
+            this.typing = data.typing;
+
+            if (this.usersTyping.map(user => user.id).indexOf(data.user.id) === -1 && this.typing) {
+                this.usersTyping.push(data.user);
+            }
+
+            if (!this.typing) {
+                this.usersTyping = this.usersTyping.filter(function(user) {
+                    return user.id === data.user.id;
+                });
+
+                // this.usersTyping = this.usersTyping.filter(function(item) {
+                //     return item.id !== data.user.id;
+                // });
+            }
         }
     },
     methods: {
         openWidget() {
             this.$bus.emit('WIDGET_CHANGED', true);
-        }
+        },
 
     },
 }
@@ -99,5 +119,15 @@ export default {
     top: 0px;
     left: 0px;
     transform: translate3d(258px, 105px, 0px);
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 </style>
