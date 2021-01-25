@@ -55,7 +55,6 @@ export default {
 
             this.thread = thread;
             console.log('Thread changed on body chat.');
-            console.log('.sendmessage1');
 
             Echo.join(`thread.${thread.id}`)
                 .here(users => {
@@ -105,5 +104,8 @@ export default {
     flex-direction: column;
 }
 
+.messages {
+    margin-bottom: 40px;
+}
 
 </style>

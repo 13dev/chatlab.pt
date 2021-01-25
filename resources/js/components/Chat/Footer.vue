@@ -75,6 +75,18 @@ export default {
             this.$inertia.post('/messages', data, {
                 onSuccess: () => {
                     this.$bus.emit('SENDED_MESSAGE', this.$page.props.response);
+
+                    let chatBody = $('.layout .content .chat .chat-body');
+
+                    setTimeout(function () {
+
+                        chatBody.scrollTop(chatBody.get(0).scrollHeight, 300).niceScroll({
+                            cursorcolor: 'rgba(66, 66, 66, 0.20)',
+                            cursorwidth: "4px",
+                            cursorborder: '0px',
+                        }).resize();
+                    }, 200);
+
                 },
                 onError(errors) {
                     console.log(222);
