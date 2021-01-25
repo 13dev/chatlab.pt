@@ -80,7 +80,6 @@ export default {
                 return localStorage.getItem('MODE') || '0';
             },
             set mode(value) {
-                console.log('setting');
                 localStorage.setItem('MODE', value);
             },
             user: this.$page.props.user,

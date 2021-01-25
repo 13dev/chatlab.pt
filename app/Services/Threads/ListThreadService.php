@@ -3,23 +3,24 @@
 namespace App\Services\Threads;
 
 use App\Repositories\ThreadRepository;
+use Illuminate\Support\Facades\Auth;
 
 class ListThreadService
 {
     /**
      * @var ThreadRepository
      */
-    private ThreadRepository $messageThreadRepository;
+    private ThreadRepository $threadRepository;
 
-    public function __construct(ThreadRepository $messageThreadRepository)
+    public function __construct(ThreadRepository $threadRepository)
     {
-        $this->messageThreadRepository = $messageThreadRepository;
+        $this->threadRepository = $threadRepository;
     }
 
     public function __invoke()
     {
         debugbar()->log('Calling ListThreadSerice');
 
-        return $this->messageThreadRepository->all();
+        return $this->threadRepository->byUser(Auth::user()->getKey());
     }
 }

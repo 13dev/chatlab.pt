@@ -1,8 +1,10 @@
 import Vue from 'vue';
 
-window.JQuery = window.$ = require('jquery');
+window.jQuery = window.JQuery = window.$ = require('jquery');
+
 require('popper.js');
 require('bootstrap');
+require('jquery.nicescroll');
 
 window._ = require('lodash');
 window.axios = require('axios');
@@ -55,3 +57,16 @@ window.Echo = new Echo({
     cluster: 'eu',
     forceTLS: true
 });
+
+
+// $(function () {
+//     let data = {
+//         cursorcolor: "rgba(66, 66, 66, 0.20)",
+//         cursorwidth: "4px",
+//         cursorborder: "0px"
+//     };
+//     $(".chat-body").niceScroll(data);
+//     $(".sidebar-body").niceScroll(data);
+// });
+
+
