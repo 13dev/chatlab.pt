@@ -83,7 +83,23 @@ export default {
                     console.log('Reciving message...', event.message);
                     this.messages.push(event.message);
                 })
-                .listenForWhisper('typing', user => {
+                .listenForWhisper('typing', data => {
+                    console.log('typings...', data);
+
+                    this.$bus.emit('USER_TYPING', {
+                        user: data.user,
+                        typing: data.typing,
+                    });
+
+                    // remove is typing indicator after 0.6s
+                    setTimeout( function () {
+                        this.$bus.emit('USER_TYPING', {
+                            user: data.user.id,
+                            typing: false,
+                        });
+                        console.log('stop writing...')
+                    }.bind(this), 2000);
+
                     // this.activeUser = user;
                     // if (this.typingTimer) {
                     //     clearTimeout(this.typingTimer);

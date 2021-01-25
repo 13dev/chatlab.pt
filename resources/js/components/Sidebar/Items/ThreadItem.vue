@@ -1,5 +1,6 @@
 <template>
-    <li class="list-group-item thread-list" :class="{ 'open-chat': this.activeChat == this.thread.id }" @click.prevent="handleChangeChat" >
+    <li class="list-group-item thread-list" :class="{ 'open-chat': this.activeChat == this.thread.id }"
+        @click.prevent="handleChangeChat">
         <div>
             <figure class="avatar">
                 <img :src="thread.avatar" class="rounded-circle" alt="image">
@@ -41,26 +42,26 @@ export default {
             required: true,
         }
     },
-    data(){
+    data() {
         return {
-            activeChat : null,
-            user : this.$page.props.user
+            activeChat: null,
+            user: this.$page.props.user
         }
-    },on : {
-        ACTIVE_CHAT(activeChat){
+    }, on: {
+        ACTIVE_CHAT(activeChat) {
             //to fixx
             this.activeChat = activeChat;
         }
     },
     methods: {
-    handleChangeChat(){
-        if(this.activeChat != this.thread.id ){
-            this.$bus.emit('THREAD_CHANGED', this.thread);
-            this.$bus.emit('WIDGET_CHANGED', false);
-            this.$bus.emit('ACTIVE_CHAT',this.thread.id);
-        }
-    },
-}
+        handleChangeChat() {
+            if (this.activeChat != this.thread.id) {
+                this.$bus.emit('THREAD_CHANGED', this.thread);
+                this.$bus.emit('WIDGET_CHANGED', false);
+                this.$bus.emit('ACTIVE_CHAT', this.thread.id);
+            }
+        },
+    }
 }
 </script>
 
