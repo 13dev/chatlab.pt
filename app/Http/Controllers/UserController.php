@@ -71,16 +71,16 @@ class UserController extends Controller
      * @param UserValidator $validator
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(Request $request , $id ,UserValidator $validator)
+    public function update(Request $request, $id, UserValidator $validator)
     {
-        $data = $request->only('name', 'email', 'password','password_confirmation');
+        $data = $request->only('name', 'email', 'password', 'password_confirmation');
 
         $validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
         $updatedData = [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password'))
+            'password' => Hash::make($request->get('password')),
         ];
 
         $response = $this->repository->update($updatedData, $id);

@@ -26,7 +26,6 @@ class MessageThreadController extends Controller
 
     private ParticipantRepository $participantRepository;
 
-
     public function __construct(ThreadRepository $threadRepository, MessageRepository $messageRepository, ParticipantRepository $participantRepository)
     {
         $this->threadRepository = $threadRepository;
@@ -53,12 +52,11 @@ class MessageThreadController extends Controller
             ->with('response', MessageResource::collection($data));
     }
 
-    public function participants($id){
-
+    public function participants($id)
+    {
         $all = $this->participantRepository->with('user')->where('thread_id', '=', $id)->get()->pluck('user');
 
         return redirect()->back()->with('response', UserResource::collection($all));
-
     }
 
     public function store(Request $request, CreateThreadService $createThreadService)
