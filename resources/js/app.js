@@ -4,7 +4,11 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue';
 import {App, plugin} from '@inertiajs/inertia-vue';
 import EventBus from 'vue-super-eventbus';
+import VueToast from 'vue-toast-notification';
+// Import one of the available themes
 
+
+Vue.use(VueToast);
 Vue.use(BootstrapVue);
 Vue.use(plugin);
 Vue.use(EventBus);

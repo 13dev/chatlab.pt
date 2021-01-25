@@ -74,10 +74,23 @@ export default {
                 .joining(user => {
                     console.log('User Joining', user);
                     this.users.push(user);
+
+                    this.$toast.open({
+                        message: `User "${user.name}" has joined the chat!`,
+                        type: 'success',
+                        position: 'top-left',
+                    });
+
                 })
                 .leaving(user => {
                     console.log('Disconnected...', user);
                     this.users = this.users.filter(u => u.id !== this.$page.props.user.id);
+
+                    this.$toast.open({
+                        message: `User "${user.name}" has left chat!`,
+                        type: 'warning',
+                        position: 'top-left',
+                    });
                 })
                 .listen('.send.message', (event) => {
                     console.log('Reciving message...', event.message);
@@ -86,7 +99,7 @@ export default {
                 .listenForWhisper('typing', data => {
                     console.log('typings...', data);
 
-                    this.$bus.emit('USER_TYPING', {
+                    this.bus.$emit('USER_TYPING', {
                         user: data.user,
                         typing: data.typing,
                     });
