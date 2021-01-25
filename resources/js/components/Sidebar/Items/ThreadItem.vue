@@ -47,7 +47,8 @@ export default {
             activeChat: null,
             user: this.$page.props.user
         }
-    }, on: {
+    },
+    on: {
         ACTIVE_CHAT(activeChat) {
             //to fixx
             this.activeChat = activeChat;

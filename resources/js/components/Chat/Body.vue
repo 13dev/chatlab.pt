@@ -42,6 +42,8 @@ export default {
     },
     methods: {
         loadMessages() {
+            if(this.thread === null) return;
+
             this.$inertia.visit(`threads/${this.thread.id}/messages`, {
                 preserveState: true,
                 onSuccess: (data) => {
@@ -112,14 +114,6 @@ export default {
                         });
                         console.log('stop writing...')
                     }.bind(this), 2000);
-
-                    // this.activeUser = user;
-                    // if (this.typingTimer) {
-                    //     clearTimeout(this.typingTimer);
-                    // }
-                    // this.typingTimer = setTimeout(() => {
-                    //     this.activeUser = false;
-                    // }, 1000);
                 })
 
 
