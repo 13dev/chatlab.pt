@@ -28,7 +28,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('user', UserController::class);
 
     // Favorite Routes
-    Route::resource('favorite', FavoriteResource::class);
+    Route::resource('favorite', FavoriteController::class);
 });
 
 Route::get('/dashboard', function () {

@@ -27,7 +27,8 @@ Vue.component('chat-message', require('./components/Chat/Message').default);
 Vue.component('widget-index', require('./components/Widget/Index').default);
 Vue.component('widget-item-about', require('./components/Widget/About').default);
 Vue.component('widget-item-media', require('./components/Widget/Media').default);
-
+Vue.component('modal-edit-profile', require('./components/Modal/EditProfile').default);
+Vue.component('modal-new-group', require('./components/Modal/NewGroup').default);
 
 $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
     // if (JQuery.browser.mobile) {

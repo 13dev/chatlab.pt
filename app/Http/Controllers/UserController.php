@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use function MongoDB\BSON\toJSON;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
@@ -20,13 +21,14 @@ class UserController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {
         $data = $this->repository->all();
+        Session::put('response', UserResource::collection($data));
 
-        return UserResource::collection($data);
+        return true;
     }
 
     /**
