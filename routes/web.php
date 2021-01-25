@@ -26,9 +26,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     // Messages Routes
     Route::resource('messages', MessageController::class)->except([
-        'index'
+        'index',
     ]);
-
 
     //Route::get('threads/{user}', [MessageThreadController::class, 'index']);
     Route::get('threads/{thread}/messages', [MessageThreadController::class, 'messages']);

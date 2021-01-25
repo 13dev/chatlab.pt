@@ -13,5 +13,4 @@ class MessageRepository extends BaseRepository
     {
         return Message::class;
     }
-
 }
