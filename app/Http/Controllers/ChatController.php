@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\FavoriteResource;
 use App\Http\Resources\ThreadResource;
+use App\Http\Resources\UserResource;
 use App\Models\Favorite;
+use App\Models\User;
 use App\Repositories\FavoriteRepository;
 use App\Services\Threads\ListThreadService;
 use Auth;
@@ -25,8 +27,9 @@ class ChatController extends Controller
 
         $favorites = FavoriteResource::collection($this->repository->with(['user', 'favorited'])->get());
 
+        $users = UserResource::collection(User::all());
         debugbar()->log($threads);
 
-        return inertia('Chat/Index', compact('threads', 'favorites'));
+        return inertia('Chat/Index', compact('threads', 'favorites','users'));
     }
 }
