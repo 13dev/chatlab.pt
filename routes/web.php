@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessageThreadController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\FavoriteResource;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/', ChatController::class);
 
+    Route::get('messages/{thread}', [MessageController::class, 'index']);
+
     // Messages Routes
-    Route::resource('messages', MessageController::class);
+    Route::resource('messages', MessageController::class)->except([
+        'index'
+    ]);
+
+
+    //Route::get('threads/{user}', [MessageThreadController::class, 'index']);
+    Route::get('threads/{thread}/messages', [MessageThreadController::class, 'messages']);
 
     // User Routes
     Route::resource('user', UserController::class);

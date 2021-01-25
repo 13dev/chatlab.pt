@@ -6,6 +6,7 @@ use App\Events\SendMessage;
 use App\Http\Resources\MessageResource;
 use App\Models\Message;
 use App\Models\Participant;
+use App\Models\Thread;
 use App\Repositories\MessageRepository;
 use App\Validators\MessageValidator;
 use Illuminate\Database\Eloquent\Model;
@@ -21,20 +22,19 @@ class MessageController extends Controller
     }
 
     /**
-     * Get all Messages.
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param Thread $thread
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
+    public function index(Thread $thread)
     {
-        $data = $this->repository->all();
 
-        return MessageResource::collection($data);
+//        return redirect()->back()->with('response', ThreadResource::collection($data));
     }
 
     /**
      * @param Request $request
      * @param MessageValidator $validator
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws \Prettus\Validator\Exceptions\Valid<atorException
      */
     public function store(Request $request, MessageValidator $validator)
     {

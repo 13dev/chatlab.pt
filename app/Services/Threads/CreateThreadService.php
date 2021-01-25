@@ -12,16 +12,16 @@ class CreateThreadService
     /**
      * @var ThreadRepository
      */
-    private ThreadRepository $messageThreadRepository;
+    private ThreadRepository $threadRepository;
     /**
      * @var ParticipantRepository
      */
-    private ParticipantRepository $messageThreadParticipantRepository;
+    private ParticipantRepository $participantRepository;
 
-    public function __construct(ThreadRepository $messageThreadRepository, ParticipantRepository $messageThreadParticipantRepository)
+    public function __construct(ThreadRepository $threadRepository, ParticipantRepository $participantRepository)
     {
-        $this->messageThreadRepository = $messageThreadRepository;
-        $this->messageThreadParticipantRepository = $messageThreadParticipantRepository;
+        $this->threadRepository = $threadRepository;
+        $this->participantRepository = $participantRepository;
     }
 
     public function __invoke(array $participants, ?string $title = null): Thread
@@ -33,19 +33,17 @@ class CreateThreadService
         DB::transaction(function () use ($participants, $title, &$thread) {
             debugbar()->log('Creating the thread...');
             /** @var Thread $thread */
-            $thread = $this->messageThreadRepository->create([
+            $thread = $this->threadRepository->create([
                 'title' => $title,
             ]);
 
             foreach ($participants as $participant) {
                 debugbar()->log('Creating Participant with uuid', $participant->getKey());
-                $this->messageThreadParticipantRepository->create([
+                $this->participantRepository->create([
                     'thread_id' => $thread->getKey(),
                     'user_id' => $participant,
                 ]);
             }
-
-            return $thread;
         });
 
         return $thread;

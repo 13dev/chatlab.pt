@@ -31,6 +31,15 @@ class Message extends Model
         return $this->belongsTo(Participant::class, 'participant_id');
     }
 
+    public function user()
+    {
+        return $this->hasOneThrough(
+            User::class, Participant::class,
+            'id', 'id',
+            'participant_id', 'user_id'
+        );
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
