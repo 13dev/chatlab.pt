@@ -63,10 +63,10 @@
                          x-placement="bottom-end">
                         <a href="#" data-navigation-target="contact-information" class="dropdown-item"
                            @click="openWidget()">Profile</a>
-                        <a href="#" class="dropdown-item">Add to archive</a>
-                        <a href="#" class="dropdown-item">Delete</a>
+                       <!-- <a href="#" class="dropdown-item">Add to archive</a>
+                        <a href="#" class="dropdown-item">Delete</a> -->
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item text-danger">Block</a>
+                            <a href="#" class="dropdown-item text-danger">Delete</a>
                     </div>
                 </li>
             </ul>
