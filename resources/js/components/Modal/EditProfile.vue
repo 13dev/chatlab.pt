@@ -30,14 +30,15 @@
                         <div class="tab-pane show active" id="personal" role="tabpanel">
                             <form>
                                 <div class="form-group">
-                                    <label for="fullname" class="col-form-label">Fullname</label>
+                                    <label  class="col-form-label">Fullname</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" v-model="fullName">
-                                        <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i data-feather="user"></i>
-                                        </span>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="col-form-label">Email</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" v-model="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -58,13 +59,13 @@
                                     <div class="form-group">
                                         <label class="col-form-label">New Password</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" v-model="password">
+                                            <input type="password" class="form-control" v-model="password">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label">Confirm Password</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" v-model="confirmPassword">
+                                            <input type="password" class="form-control" v-model="password_confirmation">
                                         </div>
                                     </div>
 
@@ -173,7 +174,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <input type="text"  class="form-control" placeholder="Username">
                                         <div class="input-group-append">
                                         <span class="input-group-text bg-google">
                                             <i class="icon-google"></i>
@@ -186,7 +187,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" @click.prevent="updateUser()">Save</button>
                 </div>
             </div>
         </div>
@@ -201,14 +202,39 @@ export default {
             user: this.$page.props.user,
             fullName: '',
             password: '',
-            confirmPassword: '',
+            password_confirmation: '',
+            email: ''
         }
     },
     created() {
         this.fullName = this.user.name;
+        this.email = this.user.email;
     },
     methods: {
+        updateUser(){
+            if(this.password != this.password_confirmation){
+                console.log(1);
+                return
+            }
+            let data = {
+                name : this.fullName,
+                email : this.email,
+                password : this.password,
+                password_confirmation : this.password_confirmation
+            }
 
+            this.$inertia.put('/user/'+ this.user.id, data, {
+                onSuccess: () => {
+                    console.log('fino');
+                },
+                onError(errors) {
+                    console.log(222);
+                },
+
+            });
+
+
+        }
     }
 };
 </script>

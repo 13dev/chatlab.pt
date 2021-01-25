@@ -15,7 +15,8 @@ class UserValidator extends LaravelValidator
         ],
         ValidatorInterface::RULE_UPDATE => [
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:8|confirmed',
+
         ],
     ];
 }

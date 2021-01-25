@@ -43,7 +43,7 @@
                                     <span class="avatar-title bg-success rounded-circle"
                                           :title="user.name">{{ user.charAt(0) }}</span>
                                 </figure>
-                                <div >
+                                <div v-show="participants.length != 0">
                                     <a href="#" title="Remove friends" @click.prevent="removeParticipant()">
                                         <figure class="avatar">
                                     <span class="avatar-title bg-danger rounded-circle">
@@ -52,7 +52,6 @@
                                         </figure>
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                         <div class="form-group">
