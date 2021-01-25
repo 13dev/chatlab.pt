@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <label for="fullname" class="col-form-label">Fullname</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="fullname">
+                                        <input type="text" class="form-control" v-model="fullName">
                                         <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i data-feather="user"></i>
@@ -45,7 +45,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <figure class="avatar mr-3 item-rtl">
-                                                <img src="" class="rounded-circle"
+                                                <img :src="user.avatar" class="rounded-circle"
                                                      alt="image">
                                             </figure>
                                         </div>
@@ -55,6 +55,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">New Password</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" v-model="password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">Confirm Password</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" v-model="confirmPassword">
+                                        </div>
+                                    </div>
+
                                 <!--<div class="form-group">
                                     <label for="city" class="col-form-label">City</label>
                                     <div class="input-group">
@@ -182,8 +195,22 @@
 
 <script>
 export default {
-   name : 'EditProfile',
- };
+    name: 'EditProfile',
+    data() {
+        return {
+            user: this.$page.props.user,
+            fullName: '',
+            password: '',
+            confirmPassword: '',
+        }
+    },
+    created() {
+        this.fullName = this.user.name;
+    },
+    methods: {
+
+    }
+};
 </script>
 
 <style scoped>

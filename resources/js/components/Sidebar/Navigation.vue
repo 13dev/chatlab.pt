@@ -59,10 +59,10 @@
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editProfileModal">Edit
                             profile</a>
-                        <a href="#" class="dropdown-item" data-navigation-target="contact-information">Profile</a>
+                        <!--<a href="#" class="dropdown-item" data-navigation-target="contact-information">Profile</a>-->
                         <a href="#" class="dropdown-item" data-toggle="modal" data-target="#settingModal">Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a href="login.html" class="dropdown-item text-danger">Logout</a>
+                        <a  class="dropdown-item text-danger" @click.prevent="logout()">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -100,6 +100,17 @@ export default {
 
         SIDEBAR_CHANGED(id, event) {
             this.$bus.emit('SIDEBAR_CHANGED', id);
+        },
+        logout(){
+            this.$inertia.post('/logout', {
+                onSuccess: () => {
+                    window.location = '/login';
+                },
+                onError(errors) {
+                    console.log('ya');
+                },
+
+            });
         }
     }
 }
