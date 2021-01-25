@@ -8,7 +8,7 @@
             <sidebar-navigation></sidebar-navigation>
             <div class="content">
                 <div class="sidebar-group">
-                    <sidebar-chat :threads="threads.data" v-show="sidebar === 1"></sidebar-chat>
+                    <sidebar-chat :threads="threads" v-show="sidebar === 1"></sidebar-chat>
                     <sidebar-friends v-show="sidebar === 2"></sidebar-friends>
                     <sidebar-favorites :favorites="favorites" v-show="sidebar === 3"></sidebar-favorites>
 
@@ -41,7 +41,17 @@ export default {
             sidebar : 1,
             widget : false,
         }
-   },
+   },created(){
+        this.$inertia.get('/thread', data, {
+            onSuccess: () => {
+                console.log('fino');
+            },
+            onError(errors) {
+                console.log(222);
+            },
+
+        });
+    },
     mounted(){
         feather.replace();
     },

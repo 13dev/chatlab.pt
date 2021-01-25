@@ -16,25 +16,25 @@ class MessageThreadController extends Controller
         );
     }
 
-    /**
-     * @param Request $request
-     * @param CreateThreadService $createThreadService
-     * @return ThreadResource
-     */
+
     public function store(Request $request, CreateThreadService $createThreadService)
     {
         $thread = $createThreadService(
             $request->get('participants'),
-            $request->get('title') ?: null
+            $request->get('description') ?: ' ',
+            $request->get('title') ?: ' '
+
         );
 
-        return new ThreadResource($thread);
+        return redirect()
+            ->back()
+            ->with('response', new ThreadResource($thread));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -45,7 +45,7 @@ class MessageThreadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -56,8 +56,8 @@ class MessageThreadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -68,7 +68,7 @@ class MessageThreadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

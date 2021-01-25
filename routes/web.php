@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessageThreadController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\FavoriteResource;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +28,11 @@ Route::middleware(['web', 'auth'])->group(function () {
     // User Routes
     Route::resource('user', UserController::class);
 
-    // Favorite Routes
+    // Favorite Routees
     Route::resource('favorite', FavoriteController::class);
+
+    Route::resource('thread', MessageThreadController::class);
+
 });
 
 Route::get('/dashboard', function () {
