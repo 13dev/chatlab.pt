@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class MessageThreadController extends Controller
 {
-
     /**
      * @var ThreadRepository
      */
@@ -38,10 +37,11 @@ class MessageThreadController extends Controller
             ->with('response', ThreadResource::collection($data));
     }
 
-    public function messages(Thread $thread) {
-
+    public function messages(Thread $thread)
+    {
         $data = $this->messageRepository->with('participant.user')->where('thread_id', $thread->getKey())->get();
         debugbar()->debug($data);
+
         return redirect()
             ->back()
             ->with('response', MessageResource::collection($data));
