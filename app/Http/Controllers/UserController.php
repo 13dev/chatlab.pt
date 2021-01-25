@@ -27,6 +27,7 @@ class UserController extends Controller
     {
         $data = $this->repository->all();
         Session::put('response', UserResource::collection($data));
+
         return true;
     }
 

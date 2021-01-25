@@ -30,6 +30,6 @@ class ChatController extends Controller
         $users = UserResource::collection(User::all());
         debugbar()->log($threads);
 
-        return inertia('Chat/Index', compact('threads', 'favorites','users'));
+        return inertia('Chat/Index', compact('threads', 'favorites', 'users'));
     }
 }
