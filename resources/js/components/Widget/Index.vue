@@ -38,7 +38,7 @@
                     </ul>
                 </div>
                 <div class="tab-content">
-                    <widget-item-about></widget-item-about>
+                    <widget-item-about :thread="thread"></widget-item-about>
                     <widget-item-media></widget-item-media>
                 </div>
             </div>
@@ -53,10 +53,7 @@ export default {
     data() {
         return {
             widget: true,
-            thread: {
-                avatar: '',
-                title: '',
-            },
+            thread: {},
         }
     },
     on: {

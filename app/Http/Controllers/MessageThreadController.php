@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MessageResource;
 use App\Http\Resources\ThreadResource;
+use App\Http\Resources\UserResource;
 use App\Models\Thread;
 use App\Models\User;
 use App\Repositories\MessageRepository;
+use App\Repositories\ParticipantRepository;
 use App\Repositories\ThreadRepository;
 use App\Services\Threads\CreateThreadService;
 use Illuminate\Http\Request;
@@ -22,10 +24,14 @@ class MessageThreadController extends Controller
      */
     private MessageRepository $messageRepository;
 
-    public function __construct(ThreadRepository $threadRepository, MessageRepository $messageRepository)
+    private ParticipantRepository $participantRepository;
+
+
+    public function __construct(ThreadRepository $threadRepository, MessageRepository $messageRepository, ParticipantRepository $participantRepository)
     {
         $this->threadRepository = $threadRepository;
         $this->messageRepository = $messageRepository;
+        $this->participantRepository = $participantRepository;
     }
 
     public function index(User $user)
@@ -45,6 +51,14 @@ class MessageThreadController extends Controller
         return redirect()
             ->back()
             ->with('response', MessageResource::collection($data));
+    }
+
+    public function participants($id){
+
+        $all = $this->participantRepository->with('user')->where('thread_id', '=', $id)->get()->pluck('user');
+
+        return redirect()->back()->with('response', UserResource::collection($all));
+
     }
 
     public function store(Request $request, CreateThreadService $createThreadService)

@@ -58,6 +58,17 @@ export default {
                 this.$bus.emit('WIDGET_CHANGED', false);
                 this.$bus.emit('ACTIVE_CHAT', this.thread.id);
             }
+            this.$inertia.visit('/thread/' + this.thread.id + '/participant', {
+                preserveState: true,
+                onSuccess: () => {
+                    this.$bus.emit('PARTICIPANTS', this.$page.props.response);
+                    console.log(this.$page.props.response);
+                },
+                onError(errors) {
+                    console.log(222);
+                },
+            });
+
         },
     }
 }
