@@ -22,31 +22,23 @@ class ParticipantController extends Controller
 
     public function index()
     {
-
     }
 
     public function store()
     {
-
     }
 
     public function show($thread_id, $user_id)
     {
-
-
     }
 
     public function edit($id)
     {
-
     }
-
 
     public function update()
     {
-
     }
-
 
     public function destroy($thread_id)
     {

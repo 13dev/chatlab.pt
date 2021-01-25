@@ -35,7 +35,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/thread/{id}/participants', [MessageThreadController::class, 'participants']);
 
-    Route::delete('/participants/{thread_id}',[ParticipantController::class,'destroy']);
+    Route::delete('/participants/{thread_id}', [ParticipantController::class, 'destroy']);
 
     // User Routes
     Route::resource('user', UserController::class);
@@ -45,9 +45,6 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     //MessageThread Route
     Route::resource('thread', MessageThreadController::class);
-
-
-
 });
 
 //Route::get('/dashboard', function () {
