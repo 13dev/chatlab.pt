@@ -1,9 +1,9 @@
 <template>
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <p class="text-muted">{{thread.description}}</p>
-        <div class="mt-4 mb-4">
+        <div class="mt-4 mb-4" >
 
-            <h6 class="mb-3">Participants</h6>
+            <h6  class="mb-3">Participants</h6>
             <div v-for="participant in participants"
             :participant="participant" class="d-flex mb-2">
              <figure class="avatar mr-3 item-rtl">
@@ -87,7 +87,7 @@ export default {
     name: "About",
     props: {
         thread: {
-            type: Array,
+            type: Object,
             required: true,
         },
     },

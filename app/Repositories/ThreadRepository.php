@@ -16,6 +16,6 @@ class ThreadRepository extends BaseRepository
     {
         return $this->whereHas('participants', function ($query) use ($userUuid) {
             return $query->where('message_thread_participants.user_id', '=', $userUuid);
-        })->paginate(5);
+        })->paginate(10);
     }
 }
