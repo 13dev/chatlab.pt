@@ -41,16 +41,6 @@ export default {
             sidebar : 1,
             widget : false,
         }
-   },created(){
-        this.$inertia.get('/thread', data, {
-            onSuccess: () => {
-                console.log('fino');
-            },
-            onError(errors) {
-                console.log(222);
-            },
-
-        });
     },
     mounted(){
         feather.replace();

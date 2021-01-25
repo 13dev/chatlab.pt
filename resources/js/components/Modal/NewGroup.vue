@@ -44,10 +44,10 @@
                                           :title="user.name">{{ user.charAt(0) }}</span>
                                 </figure>
                                 <div >
-                                    <a href="#" title="Add friends">
+                                    <a href="#" title="Remove friends" @click.prevent="removeParticipant()">
                                         <figure class="avatar">
                                     <span class="avatar-title bg-danger rounded-circle">
-                                        <i class="icon-user-minus " data-feather="user-minus"></i>
+                                        <i class="icon-user-minus " data-feather="user-minus" ></i>
                                     </span>
                                         </figure>
                                     </a>
@@ -135,6 +135,10 @@ export default {
                 },
 
             });
+        },
+        removeParticipant(){
+            this.participants.splice(-1);
+            this.participantsId.splice(-1);
         }
 },
 }
