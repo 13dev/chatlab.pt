@@ -21,7 +21,7 @@
                     <figure class="avatar avatar-xl mb-4">
                         <img :src="thread.avatar" class="rounded-circle" alt="image">
                     </figure>
-                    <h5 class="mb-1">{{thread.title}}</h5>
+                    <h5 class="mb-1">{{ thread.title }}</h5>
                     <small class="text-muted font-italic">Last seen: Today</small>
 
                     <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
@@ -41,7 +41,6 @@
                     <widget-item-about></widget-item-about>
                     <widget-item-media></widget-item-media>
                 </div>
-
             </div>
         </div>
     </div>

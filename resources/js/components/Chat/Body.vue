@@ -104,5 +104,8 @@ export default {
     flex-direction: column;
 }
 
+.messages {
+    margin-bottom: 40px;
+}
 
 </style>

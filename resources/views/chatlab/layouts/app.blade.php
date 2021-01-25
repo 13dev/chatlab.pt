@@ -18,7 +18,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
 </head>
 

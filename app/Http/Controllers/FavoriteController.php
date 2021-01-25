@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\FavoriteResource;
 use App\Repositories\FavoriteRepository;
+use App\Validators\UserValidator;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
