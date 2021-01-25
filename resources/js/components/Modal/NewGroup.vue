@@ -24,10 +24,10 @@
                         <div class="form-group">
                             <p class="mb-2">The group members</p>
                             <div class="input-group">
-                                <input type="text" class="form-control" v-model="participant">
+                                <input type="text" class="form-control" v-model="participantEmail">
                                 <div class="input-group-append">
                                     <button class="btn btn-light" data-toggle="tooltip" title="Emoji" type="button"
-                                            @click.prevent="addParticipant(participant)">
+                                            @click.prevent="addParticipant(participantEmail)">
                                         <i data-feather="user-plus"></i>
                                     </button>
                                 </div>
@@ -36,14 +36,14 @@
 
                         <div class="form-group">
                             <div class="avatar-group">
-                                <figure class="avatar" data-toggle="tooltip" title="Tobit Spraging"
-                                        v-for="user in threadParticipants"
+                                <figure class="avatar" data-toggle="tooltip"
+                                        v-for="user in participants"
                                         :user="user"
                                 >
                                     <span class="avatar-title bg-success rounded-circle"
                                           :title="user.name">{{ user.charAt(0) }}</span>
                                 </figure>
-                                <div v-show="threadParticipants != 0">
+                                <div >
                                     <a href="#" title="Add friends">
                                         <figure class="avatar">
                                     <span class="avatar-title bg-danger rounded-circle">
@@ -78,7 +78,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Create Group</button>
+                    <button type="button" class="btn btn-primary" @click.prevent="createGroup()">Create Group</button>
                 </div>
             </div>
         </div>
@@ -100,23 +100,41 @@ export default {
         return {
             groupName: '',
             avatar: '',
-            participant: '',
-            threadParticipants: [],
+            participantEmail: '',
+            participants: [],
+            participantsId: [],
             description: ''
         }
     },
 
     methods: {
         addParticipant(email) {
-        this.users.forEach((users) => {
-            if(email == users.email){
-                if(this.threadParticipants.includes(email)){
+        this.users.forEach((user) => {
+            if(email == user.email){
+                if(this.participants.includes(user.name)){
                     return;
                 }
-                this.threadParticipants.push(user.id);
+                this.participants.push(user.name);
+                this.participantsId.push(user.id);
             }
-            this.participant = '';
+            this.participantEmail = '';
         })
+        },
+        createGroup(){
+            let data = {
+                participants: this.participantsId,
+                title: this.groupName,
+                description: this.description
+            }
+            this.$inertia.post('/thread', data, {
+                onSuccess: () => {
+                    console.log('fino');
+                },
+                onError(errors) {
+                    console.log(222);
+                },
+
+            });
         }
 },
 }
