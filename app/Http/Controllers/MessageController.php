@@ -105,6 +105,5 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-
     }
 }
