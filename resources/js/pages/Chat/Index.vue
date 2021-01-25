@@ -41,7 +41,7 @@ export default {
             sidebar : 1,
             widget : false,
         }
-   },
+    },
     mounted(){
         feather.replace();
     },

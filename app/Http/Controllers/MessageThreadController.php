@@ -47,19 +47,18 @@ class MessageThreadController extends Controller
             ->with('response', MessageResource::collection($data));
     }
 
-    /**
-     * @param Request $request
-     * @param CreateThreadService $createThreadService
-     * @return ThreadResource
-     */
     public function store(Request $request, CreateThreadService $createThreadService)
     {
         $thread = $createThreadService(
             $request->get('participants'),
-            $request->get('title') ?: null
+            $request->get('description') ?: ' ',
+            $request->get('title') ?: ' '
+
         );
 
-        return new ThreadResource($thread);
+        return redirect()
+            ->back()
+            ->with('response', new ThreadResource($thread));
     }
 
     /**

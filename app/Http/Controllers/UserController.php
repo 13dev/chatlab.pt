@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use function MongoDB\BSON\toJSON;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -72,13 +73,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id, UserValidator $validator)
     {
-        $data = $request->only('name', 'email', 'password');
+        $data = $request->only('name', 'email', 'password', 'password_confirmation');
 
         $validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        $response = $this->repository->update($data, $id);
+        $updatedData = [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+        ];
 
-        return UserResource::collection($response);
+        $response = $this->repository->update($updatedData, $id);
+
+        return redirect()
+            ->to('/')
+            ->with('response', new UserResource($response));
     }
 
     /**
