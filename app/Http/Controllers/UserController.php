@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Services\UploadImageService;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use function MongoDB\BSON\toJSON;
@@ -15,10 +17,15 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 class UserController extends Controller
 {
     private UserRepository $repository;
+    /**
+     * @var UserValidator
+     */
+    private UserValidator $validator;
 
-    public function __construct(UserRepository $repository)
+    public function __construct(UserRepository $repository, UserValidator $validator)
     {
         $this->repository = $repository;
+        $this->validator = $validator;
     }
 
     /**
@@ -69,21 +76,33 @@ class UserController extends Controller
      * @param Request $request
      * @param $id
      * @param UserValidator $validator
+     * @param UploadImageService $imageService
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(Request $request, $id, UserValidator $validator)
+    public function update(Request $request, string $id, UploadImageService $uploadImageService)
     {
-        $data = $request->only('name', 'email', 'password', 'password_confirmation');
+        $data = $request->all();
 
-        $validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        $this->validator
+            ->with($data)
+            ->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        $updatedData = [
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-        ];
+        if($request->hasFile('avatar')) {
+            // upload
+            $data['avatar'] = $uploadImageService(
+                $request->avatar,
+                storage_path('app/public')
+            );
+            dump($data);
 
-        $response = $this->repository->update($updatedData, $id);
+        }
+
+        $data['password'] = bcrypt($request->get('password'));
+
+        unset($data['password_confirmation']);
+
+        $response = $this->repository->update($data, $id);
 
         return redirect()
             ->to('/')
