@@ -88,14 +88,13 @@ class UserController extends Controller
             ->with($data)
             ->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        if($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) {
             // upload
             $data['avatar'] = $uploadImageService(
                 $request->avatar,
                 storage_path('app/public')
             );
             dump($data);
-
         }
 
         $data['password'] = bcrypt($request->get('password'));
