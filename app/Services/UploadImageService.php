@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Services;
 
 use Illuminate\Http\File;
@@ -11,9 +10,10 @@ class UploadImageService
 {
     public function __invoke(File $file, string $path)
     {
-        $name = Str::uuid() . '.' . $file->extension();
+        $name = Str::uuid().'.'.$file->extension();
         FileFacade::ensureDirectoryExists($path);
         $file->move($path, $name);
+
         return $name;
     }
 }
