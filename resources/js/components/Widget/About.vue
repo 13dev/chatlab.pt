@@ -96,8 +96,18 @@ export default {
             participants: []
         }
     },on: {
-        PARTICIPANTS(participants) {
-            this.participants = participants;
+        WIDGET_CHANGED(status) {
+            if(status == true){
+                this.$inertia.visit('/thread/' + this.thread.id + '/participants', {
+                    preserveState: true,
+                    onSuccess: () => {
+                        this.participants = this.$page.props.response;
+                    },
+                    onError: (errors) => {
+                        console.log(222);
+                    },
+                });
+            }
         }
     },
 }
