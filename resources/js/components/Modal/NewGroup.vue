@@ -110,7 +110,7 @@ export default {
         addParticipant(email) {
         this.users.forEach((user) => {
             if(email == user.email){
-                if(this.participants.includes(user.name)){
+                if(this.participants.includes(user.name) || email == this.$page.props.user.email){
                     return;
                 }
                 this.participants.push(user.name);
@@ -120,11 +120,22 @@ export default {
         })
         },
         createGroup(){
+
+            if(!this.participantsId.includes(this.$page.props.user.id)){
+                this.participantsId.push(this.$page.props.user.id)
+            }
+
             let data = {
                 participants: this.participantsId,
                 title: this.groupName,
                 description: this.description
             }
+
+            this.groupName = '';
+            this.description = '';
+            this.partipants = [];
+            this.participantsId = [];
+
             this.$inertia.post('/thread', data, {
                 onSuccess: () => {
                     console.log('fino');
@@ -132,6 +143,7 @@ export default {
                 onError(errors) {
                     console.log(222);
                 },
+
 
             });
         },

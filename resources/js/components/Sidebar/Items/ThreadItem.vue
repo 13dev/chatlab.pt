@@ -20,10 +20,10 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="#" class="dropdown-item">Open</a>
                             <a href="#" data-navigation-target="contact-information"
-                               class="dropdown-item">Profile</a>
+                               class="dropdown-item" @click="openWidget()">Profile</a>
                             <a href="#" class="dropdown-item">Add to archive</a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item text-danger">Delete</a>
+                            <a href="#" class="dropdown-item text-danger" @click.prevent="leaveConversation()">Leave</a>
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,18 @@ export default {
             if (this.activeChat != this.thread.id) {
                 this.$bus.emit('THREAD_CHANGED', this.thread);
                 this.$bus.emit('WIDGET_CHANGED', false);
-                this.$bus.emit('ACTIVE_CHAT', this.thread.id);
             }
+        },
+        leaveConversation(){
+            this.$inertia.delete('/participants/'+ this.thread.id,{
+                preserveState: true,
+                onFinished: () => {
+
+                },
+            });
+        },
+        openWidget() {
+            this.$bus.emit('WIDGET_CHANGED', true);
         },
     }
 }

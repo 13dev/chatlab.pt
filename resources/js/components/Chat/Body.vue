@@ -32,6 +32,7 @@ export default {
             thread: null,
             messages: [],
             users: [],
+
         }
     },
     created() {
@@ -42,12 +43,15 @@ export default {
     },
     methods: {
         loadMessages() {
+            console.log(1);
             if(this.thread === null) return;
-
-            this.$inertia.visit(`threads/${this.thread.id}/messages`, {
+            console.log(2);
+            console.log(this.thread);
+            this.$inertia.visit("threads/" + this.thread.id +"/messages", {
                 preserveState: true,
                 onSuccess: (data) => {
                     this.messages = this.$page.props.response;
+                    console.log(3);
                 },
                 onError: (error) => console.log(error),
             })
@@ -66,6 +70,7 @@ export default {
 
             this.thread = thread;
             this.loadMessages();
+
             console.log('Thread changed on body chat.');
 
             Echo.join(`thread.${thread.id}`)

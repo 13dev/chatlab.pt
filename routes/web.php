@@ -4,6 +4,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MessageThreadController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\FavoriteResource;
 use Illuminate\Support\Facades\Route;
@@ -32,12 +33,17 @@ Route::middleware(['web', 'auth'])->group(function () {
     //Route::get('threads/{user}', [MessageThreadController::class, 'index']);
     Route::get('threads/{thread}/messages', [MessageThreadController::class, 'messages']);
 
+    Route::get('/thread/{id}/participants', [MessageThreadController::class, 'participants']);
+
+    Route::delete('/participants/{thread_id}', [ParticipantController::class, 'destroy']);
+
     // User Routes
     Route::resource('user', UserController::class);
 
     // Favorite Routees
     Route::resource('favorite', FavoriteController::class);
 
+    //MessageThread Route
     Route::resource('thread', MessageThreadController::class);
 });
 
