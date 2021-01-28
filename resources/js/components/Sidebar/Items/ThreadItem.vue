@@ -48,9 +48,9 @@ export default {
         }
     },
     on: {
-        ACTIVE_CHAT(activeChat) {
+        THREAD_CHANGED(activeChat) {
             //to fixx
-            this.activeChat = activeChat;
+            this.activeChat = activeChat.id;
         }
     },
     methods: {
