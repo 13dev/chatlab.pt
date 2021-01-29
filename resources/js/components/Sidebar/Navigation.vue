@@ -6,7 +6,7 @@
                 <li class="logo">
                     <a href="">
                         <div class="loga">
-                            <img src="images/logo/logo3.png" alt="image">
+                            <img :src="'images/logo/logo' + (mode ? '3' : '5') + '.png'" alt="image">
                         </div>
 
                     </a>
