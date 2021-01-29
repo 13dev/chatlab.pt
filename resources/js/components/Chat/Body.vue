@@ -106,7 +106,7 @@ export default {
                 .listenForWhisper('typing', data => {
                     console.log('typings...', data);
 
-                    this.bus.$emit('USER_TYPING', {
+                    this.$bus.emit('USER_TYPING', {
                         user: data.user,
                         typing: data.typing,
                     });
