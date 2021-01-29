@@ -2,7 +2,7 @@
 
 function random_avatar(?string $name = null)
 {
-    if($name === null) {
+    if ($name === null) {
         $name = urlencode(Faker\Factory::create()->firstName);
     }
 
