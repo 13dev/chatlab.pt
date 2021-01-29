@@ -17,7 +17,7 @@ class ThreadResource extends JsonResource
             ),
             'participants' => ParticipantResource::collection(
                 $this->whenLoaded('participants')),
-            'avatar' => random_avatar(), //asset($this->avatar) ,
+            'avatar' => random_avatar($this->title), //asset($this->avatar) ,
             'description' => $this->description,
         ];
     }
