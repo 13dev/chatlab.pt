@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-auth {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin: 0 auto;
+}

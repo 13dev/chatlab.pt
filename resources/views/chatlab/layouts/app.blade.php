@@ -17,15 +17,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <style>
-        .logo-auth {
-            width: 200px;
-            height: 200px;
-            text-align: center;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 
 <body>
