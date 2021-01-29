@@ -8,7 +8,7 @@
         <div class="users-list-body">
             <div>
                 <h5>{{ thread.title }}</h5>
-                <p>É essas merdas</p>
+                <p>last message</p>
             </div>
             <div class="users-list-action">
                 <small class="text-muted">4:20 PM</small>

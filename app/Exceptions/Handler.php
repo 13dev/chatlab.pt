@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Validation\ValidationException;
+use Prettus\Validator\AbstractValidator;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Session;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -23,8 +25,6 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontFlash = [
-        'password',
-        'password_confirmation',
     ];
 
     /**
@@ -36,12 +36,12 @@ class Handler extends ExceptionHandler
     {
     }
 
-    public function report(Throwable $exception)
+    public function render($request, Throwable $e)
     {
-//        if ($exception instanceof ValidationException) {
-//            dd('Validation exception');
-//        }
+        if ($e instanceof ValidatorException) {
+            return back()->with('validation', $e->getMessageBag()->all());
+        }
 
-        parent::report($exception);
+        return parent::render($request, $e);
     }
 }

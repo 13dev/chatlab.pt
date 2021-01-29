@@ -12,6 +12,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#personal" role="tab"
@@ -27,18 +28,24 @@
                         </li>
                     </ul>
                     <div class="tab-content">
+
                         <div class="tab-pane show active" id="personal" role="tabpanel">
-                            <form>
+                            <div class="alert alert-danger" v-if="editErrors && editErrors.length > 0">
+                                <ul class="m-0">
+                                    <li v-for="error in editErrors">{{ error }}</li>
+                                </ul>
+                            </div>
+                            <form enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label  class="col-form-label">Fullname</label>
+                                    <label class="col-form-label">Fullname</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" v-model="fullName">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label  class="col-form-label">Email</label>
+                                    <label class="col-form-label">Email</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" v-model="email">
+                                        <input type="email" class="form-control" name="email" v-model="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -51,23 +58,32 @@
                                             </figure>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                            <input type="file"
+                                                   name="upload"
+                                                   class="custom-file-input"
+                                                   id="customFile"
+                                                   @change="changeAvatar"
+                                                   accept="image/x-png,image/gif,image/jpeg"
+
+                                            />
+                                            <label class="custom-file-label" for="customFile">
+                                                {{ filename !== null ? filename : 'Choose Avatar...' }}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="form-group">
-                                        <label class="col-form-label">New Password</label>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" v-model="password">
-                                        </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" v-model="password">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-form-label">Confirm Password</label>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" v-model="password_confirmation">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Confirm Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" v-model="password_confirmation">
                                     </div>
+                                </div>
 
                                 <!--<div class="form-group">
                                     <label for="city" class="col-form-label">City</label>
@@ -174,7 +190,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Username">
+                                        <input type="text" class="form-control" placeholder="Username">
                                         <div class="input-group-append">
                                         <span class="input-group-text bg-google">
                                             <i class="icon-google"></i>
@@ -203,7 +219,10 @@ export default {
             fullName: '',
             password: '',
             password_confirmation: '',
-            email: ''
+            email: '',
+            avatar: null,
+            filename: null,
+            editErrors: [],
         }
     },
     created() {
@@ -211,29 +230,37 @@ export default {
         this.email = this.user.email;
     },
     methods: {
-        updateUser(){
-            if(this.password != this.password_confirmation){
-                console.log(1);
-                return
-            }
+        changeAvatar(event) {
+            this.avatar = event.target.files[0];
+            this.filename = this.avatar.name;
+
+        },
+        updateUser() {
             let data = {
-                name : this.fullName,
-                email : this.email,
-                password : this.password,
-                password_confirmation : this.password_confirmation
-            }
+                name: this.fullName,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation,
+                avatar: this.avatar,
+            };
 
-            this.$inertia.put('/user/'+ this.user.id, data, {
-                onSuccess: () => {
-                    console.log('fino');
-                },
-                onError(errors) {
-                    console.log(222);
-                },
+            console.log(data);
 
+            this.$inertia.put('/user/' + this.user.id, data, {
+                onFinish: () => {
+                    if (this.handleErrorUpdateUser() === null) {
+                        this.$toast.success('Profile updated!');
+                    }
+                }
             });
-
-
+        },
+        handleErrorUpdateUser() {
+            console.log(this.$page.props);
+            this.editErrors = this.$page.props.validation;
+            if (this.editErrors) {
+                this.$toast.error('Error updating profile pleas try again later.');
+            }
+            return this.editErrors;
         }
     }
 };

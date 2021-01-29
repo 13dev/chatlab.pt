@@ -17,12 +17,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-
 </head>
 
 <body>
     @include('chatlab.modals.modals')
     @inertia
 </body>
+
 </html>
