@@ -6,7 +6,7 @@
                 <li class="logo">
                     <a href="">
                         <div class="loga">
-                            <img src="images/logo/logo2.png" alt="image">
+                            <img src="images/logo/logo3.png" alt="image">
                         </div>
 
                     </a>
@@ -126,8 +126,8 @@ export default {
 .loga {
     display: inline-block;
     margin-bottom: 0;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
 }
 </style>
